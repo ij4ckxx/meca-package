@@ -1,0 +1,48 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+meca-engine/build/
+meca-engine/dist/
+meca-engine/verification_output/
+
+# Node
+node_modules/
+dashboard/server/dist/
+dashboard/web/dist/
+
+# Secrets — real secrets come from a secrets manager, never committed here
+.env
+.env.*
+!.env.example
+
+# Editors
+.vscode/
+.idea/
+
+# Claude Code project-local session state — not part of the product
+.claude/
+
+# Generated batch output & sample article packages (customer-derived data) —
+# intentionally excluded from version control. See README.md "Sample data"
+# for what to place here to run the engine locally, and for the one
+# consequence this has on the golden-file test suite.
+/Input/
+/Output/
+/_archive/
+/archive_migration_validation/batches/
+/archive_migration_validation/*.csv
+/archive_migration_validation/*.json
+/archive_migration_validation/*.html
+/archive_migration_validation/.DS_Store

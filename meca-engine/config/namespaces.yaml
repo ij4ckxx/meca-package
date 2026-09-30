@@ -1,0 +1,23 @@
+# XML namespace prefix -> URI registry — Generator Framework (Milestone 6A).
+# Confirmed by direct inspection of the 3 real MECA reference packages'
+# generated output (Output/*.zip):
+#   - JATS documents (raw.xml, article.xml) declare no namespace of their
+#     own (validated by DTD, not by namespace) and only ever use xlink/
+#     mml/xsi/ali as auxiliary prefixes.
+#   - manifest.xml/reviews.xml/transfer.xml each declare exactly one
+#     unprefixed default namespace, keyed here by document name.
+# Which prefixes a given generator actually declares on its root element
+# is that generator's decision — this registry only holds the URIs.
+# "xml" is the reserved, implicit namespace every XML processor already
+# binds to that prefix — it is registered here for URI lookup only and
+# must never be emitted as an explicit xmlns:xml declaration.
+
+namespaces:
+  xml: http://www.w3.org/XML/1998/namespace
+  xlink: http://www.w3.org/1999/xlink
+  mml: http://www.w3.org/1998/Math/MathML
+  xsi: http://www.w3.org/2001/XMLSchema-instance
+  ali: http://www.niso.org/schemas/ali/1.0/
+  meca-manifest: https://manuscriptexchange.org/schema/manifest
+  meca-reviews: https://manuscriptexchange.org/schema/reviews
+  meca-transfer: https://manuscriptexchange.org/schema/transfer

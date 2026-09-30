@@ -1,0 +1,181 @@
+{
+  "schema_version": "1.1.0",
+  "article": {
+    "identity": {
+      "article_id": "cs-2025-0001",
+      "publisher_id_value": "EX-2025-001",
+      "doi_article_id_value": "EX-2025-001",
+      "journal_id": "clinical-science",
+      "source_object_key": "cs-2025-0001/cs-2025-0001.xml"
+    },
+    "journal_meta": {
+      "journal_title": "Journal of Examples",
+      "issn_ppub": "1234-5678",
+      "issn_epub": "8765-4321",
+      "publisher_name": "Example Press",
+      "abbrev_titles": [
+        [
+          "publisher",
+          "J. Ex."
+        ]
+      ]
+    },
+    "article_meta": {
+      "display_channel_subject": "Review Article",
+      "article_title": "A Study of Example Practices",
+      "abstracts": [
+        {
+          "text": "This study examines example practices.",
+          "abstract_type": null,
+          "language": null
+        }
+      ],
+      "contributors": [
+        {
+          "surname": "Doe",
+          "given_names": "Jane",
+          "contrib_type": "author",
+          "email": "jane.doe@example.com",
+          "orcid": "0000-0001-2345-6789",
+          "affiliation_keys": [
+            1
+          ],
+          "is_corresponding": true,
+          "raw_contrib_type": null,
+          "full_name_raw": null,
+          "suffix": null,
+          "equal_contrib": false,
+          "credit_roles": []
+        }
+      ],
+      "affiliations": [
+        {
+          "model_key": 1,
+          "institution": "University of Example",
+          "country": "USA"
+        }
+      ],
+      "corresponding_emails": [
+        {
+          "email": "jane.doe@example.com",
+          "display_text": null
+        }
+      ],
+      "heading_subjects": [
+        "Cell Biology"
+      ],
+      "copyright_statement": "\u00a9 2025 The Author(s).",
+      "copyright_year": "2025",
+      "funding": [
+        "Example Foundation Grant 12345"
+      ],
+      "keywords": [
+        "examples",
+        "testing"
+      ],
+      "counts": {
+        "word_count": 5000,
+        "ref_count": 42,
+        "fig_count": 3
+      },
+      "history_dates": {
+        "received": "2025-01-10",
+        "revision": "2025-02-01",
+        "accepted": "2025-02-20"
+      }
+    },
+    "body_fragment": {
+      "raw_xml_fragment": "<body><p>Example content.</p></body>"
+    },
+    "custom_meta": {
+      "form_answers": [
+        {
+          "key": "Authorship",
+          "values": [
+            "Yes"
+          ]
+        }
+      ],
+      "file_entries": [
+        {
+          "round_label": "Original",
+          "category": "manuscript",
+          "original_filename": "manuscript.docx",
+          "declared_path_hint": "/Original/manuscript.docx",
+          "declared_size_bytes": 102400
+        }
+      ],
+      "reviewer_scorecards": [
+        {
+          "round_label": "Original",
+          "reviewer_name": "Dr. Reviewer",
+          "reviewer_email": "reviewer@example.com",
+          "outcome_status": "completed",
+          "answers": [
+            [
+              "QN_01",
+              "Yes"
+            ]
+          ],
+          "overall_recommendation": "Minor Revision",
+          "assigned_date": null,
+          "due_date": null,
+          "submitted_date": null
+        }
+      ],
+      "decision_drafts": [
+        {
+          "round_label": "Original",
+          "decision_text": "Please revise per reviewer comments.",
+          "editor_name": "Dr. Editor",
+          "associate_editor_name": null,
+          "decision_date": "2025-02-15"
+        }
+      ],
+      "decline_reasons": [
+        {
+          "round_label": "Original",
+          "reviewer_name": "Dr. Declined",
+          "reason_text": "Conflict of interest."
+        }
+      ],
+      "workflow_log": {
+        "events": [
+          {
+            "round_label": "Original",
+            "timestamp": "2025-01-10T00:00:00+00:00",
+            "actor_name": "Dr. Editor",
+            "actor_role": "editor",
+            "channel": "to_author",
+            "event_kind": "review_comment",
+            "text": "Manuscript received.",
+            "attachment_url": null
+          }
+        ]
+      }
+    },
+    "rounds": [
+      {
+        "label": "Original",
+        "sequence_number": 1,
+        "is_latest": false
+      },
+      {
+        "label": "R1",
+        "sequence_number": 2,
+        "is_latest": true
+      }
+    ],
+    "resolved_files": [
+      {
+        "round_label": "Original",
+        "category": "manuscript",
+        "original_filename": "manuscript.docx",
+        "staged_physical_path": "/staged/Original/manuscript.docx",
+        "checksum": "abc123",
+        "size_bytes": 102400,
+        "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      }
+    ]
+  }
+}

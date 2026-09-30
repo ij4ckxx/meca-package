@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+
+# Tooling caches
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local runtime artifacts — never committed (10_LLD_01 §1)
+logs/
+/var/meca-engine/work/
+*.log
+
+# Secrets — never committed (14_LLD_05 §12.3); real secrets come from a secrets manager
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/item-type-mapping.schema.json",
+  "title": "ItemTypeMappingConfig",
+  "description": "Validates config/item-type-mapping.yaml — BR-078 / BR-019.",
+  "type": "object",
+  "required": ["mappings", "default_item_type"],
+  "additionalProperties": false,
+  "properties": {
+    "mappings": {
+      "type": "object",
+      "description": "Source custom-meta file category to manifest.xml item-type.",
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "default_item_type": { "type": "string", "minLength": 1 }
+  }
+}

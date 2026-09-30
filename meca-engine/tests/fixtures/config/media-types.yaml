@@ -1,0 +1,6 @@
+mappings:
+  .pdf: application/pdf
+  .jpg: image/jpeg
+
+unmapped_extension_policy: warn_and_default
+unmapped_extension_default: application/octet-stream

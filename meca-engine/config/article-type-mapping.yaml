@@ -1,0 +1,15 @@
+# display-channel -> article.xml article-type lookup — ADR-001 / BR-057.
+# All 3 real reference packages produce article-type="Original Study"
+# regardless of source display-channel ("Research Article", "Review
+# Article", "Research" all observed) — BR-057 (Strongly Inferred: no
+# sample exhibits a Correction, Editorial, or Case Report). ADR-001
+# (Business Confirmation Required) recommends an externally configurable
+# lookup with this documented default rather than a hard-coded constant,
+# so an unseen display-channel value doesn't need a code change.
+
+mappings:
+  Research Article: Original Study
+  Review Article: Original Study
+  Research: Original Study
+
+default_article_type: Original Study

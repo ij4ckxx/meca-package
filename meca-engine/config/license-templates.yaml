@@ -1,0 +1,14 @@
+# License Type -> article.xml <license> boilerplate — Business Rule Book
+# BR-063/064. Keyed by the source "license type" custom-meta value.
+# CC-BY-4-0 confirmed 3/3: identical license-p wording and ext-link URL
+# across all 3 real reference packages. BR-065: no sample demonstrates a
+# non-CC-BY license — do not add a speculative entry; ArticleXmlGenerator
+# raises LicenseMappingError for any License Type with no entry here.
+
+CC-BY-4-0:
+  license_type_attr: open-access
+  license_p: >-
+    This is an open access article published by Portland Press Limited on
+    behalf of the Biochemical Society and distributed under the Creative
+    Commons Attribution License 4.0 (CC BY).
+  ext_link_href: https://creativecommons.org/licenses/by/4.0/

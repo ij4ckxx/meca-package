@@ -1,0 +1,11 @@
+# Schema-conformant, entirely fictitious journal fixture — used only to
+# unit-test ConfigLoader.load_journal_config. NOT real business data; never
+# copy this file's values into config/journals/.
+journal_id: "example-journal"
+display_name: "Example Journal of Testing"
+doi_prefix: "10.9999"
+acronym: "EJT"
+article_type_mapping_ref: "article-type-mapping.yaml#example-journal"
+license_templates_ref: "license-templates.yaml"
+doi_registry_scope: "per-journal"
+publisher_id: "example-publisher"

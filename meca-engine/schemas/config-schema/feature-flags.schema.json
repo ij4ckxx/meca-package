@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/feature-flags.schema.json",
+  "title": "FeatureFlagsConfig",
+  "description": "Validates config/feature-flags.yaml — 12_LLD_03_CONFIG_LOGGING_EXCEPTIONS.md §5.8.",
+  "type": "object",
+  "required": [
+    "reviews_include_duplicate_correspondence",
+    "reviews_extended_history_scope",
+    "strict_replication_mode",
+    "allow_filename_fallback"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "reviews_include_duplicate_correspondence": {
+      "type": "boolean",
+      "description": "ADR-004."
+    },
+    "reviews_extended_history_scope": {
+      "type": "boolean",
+      "description": "ADR-005."
+    },
+    "strict_replication_mode": {
+      "type": "boolean",
+      "description": "ADR-031 — must be false in every non-golden-test environment."
+    },
+    "allow_filename_fallback": {
+      "type": "boolean",
+      "description": "ADR-032 (Milestone 10) — derive a missing filename from declared_path_hint and warn, instead of failing. Product default true."
+    }
+  }
+}

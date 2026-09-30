@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD
+v1.2 20190208//EN" "https://jats.nlm.nih.gov/archiving/1.2/JATS-archivearticle1.dtd">
+<article dtd-version="1.2" article-type="Original Study">
+  <front>
+    <article-meta>
+      <article-id pub-id-type="manuscript">AmyTest-81-10-286</article-id>
+      <article-id pub-id-type="doi">10.1234/91.1191023</article-id>
+      <article-categories>
+        <subj-group subj-group-type="Article Type">
+          <subject id="rapid_comm">Rapid Communication</subject>
+        </subj-group>
+        <subj-group subj-group-type="Category">
+          <subject>Medical Sciences</subject>
+        </subj-group>
+        <subj-group subj-group-type="Classification">
+          <subject vocab-term-identifier="100.1">Medical Sciences</subject>
+          <subject vocab-term-identifier="100.1.3">Anatomy and Pathology</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Use case testing</article-title>
+        <alt-title alt-title-type="running-head">This is where the short title or running title goes</alt-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author" corresp="yes" specific-use="submitting">
+          <string-name>
+            <given-names>Patrick</given-names>
+            <surname>McCaw</surname>
+          </string-name>
+          <role content-type="1"/>
+          <role vocab="credit" vocab-identifier="http://dictionary.casrai.org/Contributor_Roles" vocab-term="Investigation" vocab-term-identifier="https://dictionary.casrai.org/Contributor_Roles/Investigation" specific-use="Lead">Data Collection</role>
+          <contrib-id contrib-id-type="internal">99999</contrib-id>
+          <contrib-id contrib-id-type="orcid" specific-use="authenticated">0000-0003-2141-4459</contrib-id>
+          <contrib-id contrib-id-type="isni"> 1234</contrib-id>
+          <contrib-id contrib-id-type="pubmed">5678 1</contrib-id>
+          <contrib-id contrib-id-type="researcherid">9999</contrib-id>
+          <contrib-id contrib-id-type="scopusid">8888</contrib-id>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author">
+          <string-name>
+            <given-names>Fred</given-names>
+            <surname>Vanvleet</surname>
+          </string-name>
+          <role vocab="credit" vocab-identifier="http://dictionary.casrai.org/Contributor_Roles" vocab-term="Investigation" vocab-term-identifier="https://dictionary.casrai.org/Contributor_Roles/Investigation">Data Collection</role>
+          <contrib-id contrib-id-type="internal">4567</contrib-id>
+          <contrib-id contrib-id-type="orcid" specific-use="authenticated">0000-0003-2395-4862</contrib-id>
+          <contrib-id contrib-id-type="isni">ISNI 101</contrib-id>
+          <contrib-id contrib-id-type="pubmed">PubMed 101</contrib-id>
+          <contrib-id contrib-id-type="researcherid">ResearcherID 101</contrib-id>
+          <contrib-id contrib-id-type="scopusid">Scopus 101</contrib-id>
+          <xref ref-type="aff" rid="aff2"/>
+        </contrib>
+        <aff id="aff1">
+          <institution-wrap>
+            <institution>Massachusetts Institution of Technology</institution>
+            <institution-id institution-id-type="Ringgold">12345</institution-id>
+          </institution-wrap>
+          <institution content-type="dept">Department in this spot</institution>
+          <addr-line content-type="addrline1">200 Sutton St</addr-line>
+          <addr-line content-type="addrline2">Suite 304</addr-line>
+          <addr-line content-type="addrline3">Room 5</addr-line>
+          <addr-line content-type="addrline4">Maildrop 501</addr-line>
+          <country specific-use="GB">United Kingdom</country>
+          <addr-line content-type="city">North Andover</addr-line>
+          <addr-line content-type="state">Ma</addr-line>
+          <addr-line content-type="zipcode">01845</addr-line>
+          <fax>978-975-3811</fax>
+          <phone>978-975-7570</phone>
+        </aff>
+        <aff id="aff2">
+          <institution>Tufts University</institution>
+          <institution content-type="position">Professor of Veterinary Medicine</institution>
+          <institution content-type="dept">Physical Therapy</institution>
+          <addr-line content-type="addrline1">175 Hydrangea Street</addr-line>
+          <addr-line content-type="addrline2">Suite 3</addr-line>
+          <addr-line content-type="addrline3">Unit 304</addr-line>
+          <addr-line content-type="addrline4">Maildrop 13</addr-line>
+          <fax>978-975-3811</fax>
+          <phone>978-975-7570</phone>
+          <country specific-use="us">UNITED STATES</country>
+          <addr-line content-type="city">Atkinson</addr-line>
+          <addr-line content-type="state">NH</addr-line>
+          <addr-line content-type="zipcode">03873</addr-line>
+        </aff>
+      </contrib-group>
+      <history/>
+      <abstract>
+        <p>This is the manuscript abstract as a separate field outside of the word doc</p>
+      </abstract>
+      <kwd-group>
+        <kwd>Burndown</kwd>
+        <kwd>glyphosate resistance</kwd>
+        <kwd>herbicide efficacy</kwd>
+        <kwd>herbicide mixtures</kwd>
+        <kwd>plant density</kwd>
+        <kwd>weed resistance</kwd>
+        <kwd>yield reduction</kwd>
+      </kwd-group>
+      <funding-group>
+        <award-group>
+          <funding-source>
+            <institution-wrap>
+              <institution>National Institutes of Health (US)</institution>
+              <institution-id institution-id-type="doi" vocab="open-funder-registry" vocab-identifier="10.13039/open-funder-registry">10.13039/100000002</institution-id>
+            </institution-wrap>
+            <named-content content-type="funder-id">http://dx.doi.org/10.13039/100001234</named-content>
+          </funding-source>
+          <award-id>grant number goes here</award-id>
+          <principal-award-recipient>
+            <name>
+              <surname>Carberry</surname>
+              <given-names>Josiah Stinkney</given-names>
+            </name>
+            <!-- Only use the @authenticated="true" attribute if the ORCID has been collected using the ORCID
+login and validation step and has not been copy and pasted at any point in the workflow. If this is not
+the case the value should be set to "false" -->
+            <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0002-1825-0097</contrib-id>
+          </principal-award-recipient>
+        </award-group>
+        <award-group>
+          <funding-source>Radcliffe Institute for Advanced Study, Harvard University<named-content content-type="funder-id">http://dx.doi.org/10.13039/100006274</named-content></funding-source>
+          <principal-award-recipient>Joe Smith</principal-award-recipient>
+        </award-group>
+      </funding-group>
+      <counts>
+        <count count-type="image-bw" count="3"/>
+        <count count-type="image-color" count="3"/>
+        <fig-count count="0"/>
+      </counts>
+      <custom-meta-group>
+        <custom-meta specific-use="Additional Manuscript Detail" id="online_only">
+          <meta-name>Online Only Figures</meta-name>
+          <meta-value>Yes</meta-value>
+        </custom-meta>
+        <custom-meta>
+          <meta-name>Manuscript Notes</meta-name>
+          <meta-value>These are some manuscript notes from the exporting system which will be imported into EM's manuscript notes field if present in the XML.</meta-value>
+        </custom-meta>
+        <custom-meta>
+          <meta-name>Production Notes</meta-name>
+          <meta-value>These are some Production Notes</meta-value>
+        </custom-meta>
+        <!-- The following custom-meta tags illustrate the tagging to be used to ingest a custom
+question response for the Corresponding Author. The value of the "id" attribute must contain the
+Custom Metadata ID configured on the EM site. The value of the specific-use attribute must be
+hardcoded to "question" for a parent-level question. -->
+        <custom-meta id="conflict" specific-use="question">
+          <meta-name>Question text or a portion of the question text is written here</meta-name>
+          <meta-value>Corresponding Author's response is written here. If the question has multiple responses, each response is separated by a pipe character e.g. red|blue|yellow</meta-value>
+        </custom-meta>
+        <!-- The following custom-meta tags illustrate the tagging to be used to ingest a custom
+question response for the Corresponding Author, that is a response to a follow-up question. The
+value of the "id" attribute must contain the Custom Metadata ID configured for the follow-up question
+on the EM site. The value of the specific-use attribute must be hardcoded to question: (including the
+colon :) followed by the Custom Metadata ID value of the parent-level question. In the sample shown,
+the question with the id "coi_details" is a follow-up question to the parent question with the Custom
+Metadata ID "conflict", and the question with the id "coi_more_info" is a follow-up question to its
+parent which has the Custom Metadata ID "coi_details" [its parent is a follow-up question to the top
+level question] -->
+        <custom-meta id="coi_details" specific-use="question_follow-up-to:conflict">
+          <meta-name>The follow-up question text or a portion of the follow-up question text is written here</meta-name>
+          <meta-value>Corresponding Author's response to the follow-up question is written here. If the follow-up question has multiple responses, each response is separated by a pipe character e.g. orange|green|violet</meta-value>
+        </custom-meta>
+        <custom-meta id="coi_more_info" specific-use="question_follow-up-to:coi_details">
+          <meta-name>The 2nd level follow-up question text or a portion of the 2nd level follow-up question text is written here</meta-name>
+          <meta-value>Corresponding Author's response to the 2nd level follow-up question is written here. If the follow-up question has multiple responses, each response is separated by a pipe character</meta-value>
+        </custom-meta>
+      </custom-meta-group>
+    </article-meta>
+  </front>
+  <body/>
+</article>

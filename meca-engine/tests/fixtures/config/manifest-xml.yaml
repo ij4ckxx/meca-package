@@ -1,0 +1,13 @@
+doctype_public_id: "-//MECA//DTD Manifest v1.0//en"
+doctype_system_id: "./schema/manifest-1.0.dtd"
+encoding: UTF-8
+manifest_version: "1"
+pretty_indent_spaces: 2
+item_article_description_template: "Article metadata exported from JATS (publisher-id: {publisher_id})"
+item_reviews_description: "MECA reviews.xml generated from JATS custom-meta and history dates"
+item_transfer_description: "MECA transfer.xml with source/destination info"
+article_filename_pattern: "{article_id}_article.xml"
+reviews_filename_pattern: "{article_id}_reviews.xml"
+transfer_filename_pattern: "{article_id}_transfer.xml"
+file_item_id_prefix: "file-"
+file_item_description_template: "{category} — {original_filename} ({size_bytes} bytes)"

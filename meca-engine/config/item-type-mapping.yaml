@@ -1,0 +1,13 @@
+# custom-meta file category -> manifest.xml item-type lookup — BR-078.
+# BR-019: the category vocabulary is open, not a fixed enum — any
+# unmapped category (coverletter, supplement, responsetoreviewer,
+# trackchanges, tables, and future unknown keys) falls back to
+# default_item_type rather than failing. Evidence: 3/3, every observed
+# category maps consistently.
+
+mappings:
+  manuscript: manuscript
+  figure: figure
+  licencetopublishform: author agreement
+
+default_item_type: supplemental

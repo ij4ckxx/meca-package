@@ -1,0 +1,192 @@
+[build-system]
+requires = ["setuptools>=69.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meca-engine"
+version = "1.0.0-rc1"
+description = "MECA Package Generation Engine — automated NISO MECA package builder for Clinical Science / Portland Press submissions."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Proprietary" }
+authors = [
+    { name = "MECA Engine Team" },
+]
+keywords = ["meca", "jats", "publishing", "xml", "niso"]
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Private :: Do Not Upload",
+]
+
+# Runtime dependencies.
+# `defusedxml` added at Milestone 3 (XML Parsing Layer): the stdlib's
+# xml.etree.ElementTree/expat does not protect against XML entity-expansion
+# ("billion laughs") or external-entity/DTD-retrieval attacks by default,
+# and Milestone 3's "Safe XML parsing" requirement is explicit — defusedxml
+# is a minimal, pure-stdlib-wrapping, single-purpose, industry-standard
+# solution (no transitive dependencies) for exactly this.
+# `lxml` added at Milestone 9 (XSLT-based raw.xml generation,
+# `generators.raw_xml.xslt_transform`): the stdlib has no XSLT support at
+# all. `lxml.etree.XSLT` is applied through the same XXE-hardening
+# discipline as `defusedxml` above — entity resolution and network access
+# are explicitly disabled on every parser this module constructs, never
+# left at libxml2's permissive defaults.
+dependencies = [
+    "PyYAML>=6.0.1",
+    "jsonschema>=4.21.0",
+    "click>=8.1.7",
+    "defusedxml>=0.7.1",
+    "lxml>=5.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.12.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.4.0",
+    "mypy>=1.9.0",
+    "types-PyYAML>=6.0.12",
+    "types-jsonschema>=4.21.0",
+    "types-defusedxml>=0.7.0",
+    "lxml-stubs>=0.5.1",
+    "pre-commit>=3.6.0",
+]
+# Only required to use meca_engine.input.readers.s3_reader.Boto3S3Client
+# for real (not against the FakeS3Client test double). Kept optional per
+# the current task's allowance that "concrete AWS integration may be
+# mocked if blocked by infrastructure decisions" (TQ-04) — the core
+# package installs and every S3Reader unit test runs without it.
+aws = [
+    "boto3>=1.34.0",
+]
+
+[project.scripts]
+meca-engine = "meca_engine.cli.main:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"meca_engine" = ["py.typed"]
+"meca_engine.generators.raw_xml" = ["*.xslt"]
+
+# --- Ruff: formatter + linter (14_LLD_05 §13.3) ---
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E", "F", "W",      # pycodestyle / pyflakes
+    "I",                # import ordering
+    "N",                # pep8-naming
+    "D",                # pydocstyle — enforces docstring presence (13_LLD_05 §13.3)
+    "UP",               # pyupgrade
+    "B",                # bugbear
+    "C90",              # mccabe complexity
+    "ANN",              # flake8-annotations — enforces full type hints (13_LLD_05 §13.2)
+    "TCH",              # flake8-type-checking
+]
+ignore = [
+    "D203",             # conflicts with D211 (no-blank-line-before-class)
+    "D212",             # conflicts with D213 (multi-line-summary-second-line)
+    # UP042/UP017 suggest enum.StrEnum / datetime.UTC, both valid on the
+    # project's declared Python 3.12+ target (14_LLD_05 §13.1), but this
+    # delivery's development sandbox only had a Python 3.9 interpreter
+    # available to actually execute and verify the test suite against
+    # (see README.md's "Known Limitations of This Environment" section).
+    # `str, Enum` and `timezone.utc` are fully correct on 3.12 too, just
+    # less idiomatic — revisit and re-enable these two rules once CI runs
+    # on the real target interpreter.
+    "UP042",
+    "UP017",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["D", "ANN"]   # tests favor readability over strict doc/annotation coverage
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+# --- mypy: strict typing (13_LLD_05 §13.2) ---
+[tool.mypy]
+python_version = "3.12"
+strict = true
+mypy_path = "src"
+namespace_packages = true
+explicit_package_bases = true
+warn_unused_configs = true
+disallow_any_generics = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+# Tests favor readability over strict doc/annotation coverage, mirroring
+# the ruff per-file-ignore for "tests/**/*.py" above. `warn_unused_ignores`
+# is also relaxed here since relaxing the two checks below routinely makes
+# a `# type: ignore[no-untyped-def]` on an inner test-double method
+# legitimately unnecessary from one mypy run to the next as test code
+# changes — not worth chasing precisely in test-only code.
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+warn_unused_ignores = false
+
+# boto3/botocore are an optional "aws" dependency group (see
+# meca_engine.input.readers.s3_reader.Boto3S3Client) — not installed by
+# default, and not typed as a hard requirement of this project's own
+# strict-typing policy, since Boto3S3Client lazily imports them at
+# runtime rather than at module scope.
+[[tool.mypy.overrides]]
+module = ["boto3.*", "botocore.*"]
+ignore_missing_imports = true
+
+# `mocks.fake_s3_client` (tests/mocks/) is resolvable at test-run time via
+# pytest's `pythonpath` ini option (not a mypy setting); adding "tests" to
+# mypy_path to resolve it too would make mypy treat tests/ itself as a
+# root and rename every test module's checked identity (dropping the
+# "tests." prefix), breaking the "tests.*" override above. Simpler to
+# just let mypy treat this test-only import as untyped.
+[[tool.mypy.overrides]]
+module = "mocks.*"
+ignore_missing_imports = true
+
+# --- pytest (14_LLD_05 §11, §13.6) ---
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra --strict-markers --cov=meca_engine --cov-report=term-missing"
+testpaths = ["tests/unit", "tests/integration"]
+# "src" so `meca_engine` is importable without a package install; "tests"
+# so shared test doubles under tests/mocks/ (e.g. FakeS3Client) are
+# importable as `mocks.fake_s3_client` from any test module.
+pythonpath = ["src", "tests"]
+markers = [
+    "unit: fast, fully-isolated unit tests (always run in CI)",
+    "integration: multi-module tests against faked externals (always run in CI)",
+    "golden: golden-file regression against the 3 real sample packages (mandatory merge gate)",
+    "synthetic: synthetic-fixture coverage for scenarios the 3 real samples cannot cover",
+    "performance: timing/scale benchmarks (nightly/scheduled only, per 14_LLD_05 §12.2)",
+    "fault_injection: fault-injecting fake-dependency tests (in-process; process-kill variants run separately)",
+]
+
+[tool.coverage.run]
+source = ["src/meca_engine"]
+branch = true
+# Milestone 7's checkpoint-based batch/resume tests exercise real
+# concurrent transitions via `threading.Thread` (mirroring the existing
+# Checkpoint Store precedent) — without this, coverage.py only traces
+# the main thread and under-reports branches only reachable under a
+# genuine race.
+concurrency = ["thread"]
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true

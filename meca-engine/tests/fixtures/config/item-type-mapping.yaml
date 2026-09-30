@@ -1,0 +1,6 @@
+mappings:
+  manuscript: manuscript
+  figure: figure
+  licencetopublishform: author agreement
+
+default_item_type: supplemental

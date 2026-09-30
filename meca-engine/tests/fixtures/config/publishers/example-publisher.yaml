@@ -1,0 +1,6 @@
+# Schema-conformant, entirely fictitious publisher fixture — used only to
+# unit-test ConfigLoader.load_publisher_config. NOT real business data.
+publisher_id: "example-publisher"
+provider_name: "Example Publisher Limited"
+destination_provider_name: "Example Hosting Platform"
+default_contact_policy: "corresponding_author_email"

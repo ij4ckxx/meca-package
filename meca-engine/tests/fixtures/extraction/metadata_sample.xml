@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" lang="en">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher-id">EX</journal-id>
+      <journal-title>Journal of Examples</journal-title>
+      <abbrev-journal-title abbrev-type="pubmed">J. Ex.</abbrev-journal-title>
+      <issn pub-type="epub">1234-5678</issn>
+      <issn pub-type="ppub">8765-4321</issn>
+      <publisher-name>Example Press</publisher-name>
+    </journal-meta>
+    <article-meta publication-status="in-press">
+      <article-id pub-id-type="doi">10.1234/example.2025.001</article-id>
+      <article-id pub-id-type="publisher-id">EX-2025-001</article-id>
+      <title-group>
+        <article-title>A Study of Example Practices</article-title>
+        <subtitle>A Companion Analysis</subtitle>
+      </title-group>
+      <abstract>
+        <p>This study examines example practices in a controlled setting.</p>
+      </abstract>
+      <article-categories>
+        <subj-group subj-group-type="display-channel"><subject>Research Article</subject></subj-group>
+        <subj-group subj-group-type="heading"><subject>Cell Biology</subject></subj-group>
+      </article-categories>
+      <volume>12</volume>
+      <issue>3</issue>
+      <fpage>100</fpage>
+      <lpage>110</lpage>
+      <elocation-id>e12345</elocation-id>
+      <permissions>
+        <copyright-statement>&#169; 2025 Example Author(s).</copyright-statement>
+        <copyright-year>2025</copyright-year>
+      </permissions>
+      <kwd-group>
+        <kwd>examples</kwd>
+        <kwd>testing</kwd>
+      </kwd-group>
+      <funding-group>Example Foundation Grant 999</funding-group>
+      <counts>
+        <word-count count="5000"/>
+        <ref-count count="42"/>
+        <fig-count count="3"/>
+      </counts>
+      <contrib-group>
+        <contrib contrib-type="author" corresp="yes">
+          <name><surname>Doe</surname><given-names>Jane</given-names></name>
+          <contrib-id>0000-0001-2345-6789</contrib-id>
+          <email>jane.doe@example.com</email>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author">
+          <name><surname>Smith</surname><given-names>John</given-names></name>
+          <xref ref-type="aff" rid="aff2"/>
+        </contrib>
+        <contrib contrib-type="editor">
+          <name><surname>Lee</surname><given-names>Kim</given-names></name>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <label>1</label>
+        <named-content content-type="institution">University of Example</named-content>
+        <named-content content-type="country">USA</named-content>
+      </aff>
+      <aff id="aff2">
+        <label>2</label>
+        <named-content content-type="institution">Example Institute</named-content>
+        <named-content content-type="country">UK</named-content>
+      </aff>
+      <history>
+        <date date-type="received"><year>2025</year><month>01</month><day>10</day></date>
+        <date date-type="accepted"><year>2025</year><month>02</month><day>20</day></date>
+      </history>
+      <pub-date date-type="pub"><year>2025</year><month>03</month><day>01</day></pub-date>
+      <custom-meta-group>
+        <custom-meta specific-use="question" data-reviewer-email="reviewer@example.com" data-version="Original">
+          <meta-name>review-type</meta-name>
+          <meta-value>single-blind</meta-value>
+        </custom-meta>
+        <custom-meta>
+          <meta-name>preprint-flag</meta-name>
+          <meta-value><named-content content-type="flag">yes</named-content></meta-value>
+        </custom-meta>
+      </custom-meta-group>
+    </article-meta>
+  </front>
+  <body>
+    <p>See <xref ref-type="fig" rid="fig1">Figure 1</xref> and <xref ref-type="bibr" rid="ref1 ref2">refs</xref>.</p>
+    <fig id="fig1">
+      <label>Figure 1</label>
+      <graphic xlink:href="fig1.jpg"/>
+    </fig>
+    <table-wrap id="tbl1">
+      <label>Table 1</label>
+    </table-wrap>
+    <supplementary-material id="supp1" xlink:href="supp1.pdf"/>
+  </body>
+  <back>
+    <processing-meta>
+      <event>
+        <action>submitted</action>
+        <date>2025-01-10</date>
+      </event>
+      <event>
+        <action>accepted</action>
+        <date>2025-02-20</date>
+      </event>
+    </processing-meta>
+  </back>
+</article>

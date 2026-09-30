@@ -1,0 +1,15 @@
+doctype_public_id: "-//MECA//DTD Transfer v1.0//en"
+doctype_system_id: "./schema/transfer-1.0.dtd"
+transfer_version: "1.0"
+publication_type: journal
+pretty_indent_spaces: 2
+authentication_code_separator: "|"
+processing_instructions:
+  - "Validate Metadata"
+  - "Ingest Article Package"
+processing_comments_template: "Generated automatically from source JATS: {raw_xml_filename}"
+raw_xml_filename_pattern: "{article_id}_raw.xml"
+transfer_filename_pattern: "{article_id}_transfer.xml"
+source_section_comment: "======== SOURCE ========"
+destination_section_comment: "======== DESTINATION ========"
+instructions_section_comment: "======== INSTRUCTIONS & PROVENANCE ========"

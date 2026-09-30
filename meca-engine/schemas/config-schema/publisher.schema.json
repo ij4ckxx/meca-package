@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/publisher.schema.json",
+  "title": "PublisherConfig",
+  "description": "Validates config/publishers/<publisher-id>.yaml — 12_LLD_03_CONFIG_LOGGING_EXCEPTIONS.md §5.3.",
+  "type": "object",
+  "required": [
+    "publisher_id",
+    "provider_name",
+    "destination_provider_name",
+    "default_contact_policy"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "publisher_id": { "type": "string", "minLength": 1 },
+    "provider_name": { "type": "string", "minLength": 1 },
+    "destination_provider_name": { "type": "string", "minLength": 1 },
+    "default_contact_policy": {
+      "type": "string",
+      "enum": ["corresponding_author_email"]
+    }
+  }
+}

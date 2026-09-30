@@ -1,0 +1,5 @@
+mappings:
+  Research Article: Original Study
+  Review Article: Original Study
+
+default_article_type: Original Study

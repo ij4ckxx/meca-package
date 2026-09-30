@@ -1,0 +1,18 @@
+# journal-id[@journal-id-type="publisher-id"] -> publisher abbreviation
+# lookup — Business Rule Book BR-164.
+#
+# Deterministic, closed mapping only: an unrecognized publisher-id is
+# never guessed at (no default/fallback value exists here, unlike
+# article-type-mapping.yaml's `default_article_type`) — BR-164 leaves
+# the XML unchanged and records a Validation Only finding instead.
+# Every key here matches `identity.journal_id` exactly as it appears in
+# generated raw.xml/article.xml (ADR-028's lower-cased config lookup
+# key, not necessarily the publisher's own verbatim source string).
+
+mappings:
+  cs: CS
+  bcj: BCJ
+  bst: BST
+  bsr: BSR
+  etls: ETLS
+  ebc: EBC

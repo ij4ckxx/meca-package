@@ -1,0 +1,319 @@
+{
+  "article": {
+    "identifiers": [
+      {
+        "id_type": "doi",
+        "value": "10.1234/example.2025.001"
+      },
+      {
+        "id_type": "publisher-id",
+        "value": "EX-2025-001"
+      }
+    ],
+    "title": "A Study of Example Practices",
+    "subtitle": "A Companion Analysis",
+    "article_type": "research-article",
+    "publication_status": "in-press",
+    "language": "en",
+    "history_dates": [
+      {
+        "date_type": "received",
+        "year": "2025",
+        "month": "01",
+        "day": "10"
+      },
+      {
+        "date_type": "accepted",
+        "year": "2025",
+        "month": "02",
+        "day": "20"
+      }
+    ],
+    "pub_dates": [
+      {
+        "date_type": "pub",
+        "year": "2025",
+        "month": "03",
+        "day": "01"
+      }
+    ],
+    "display_channel_subject": "Research Article",
+    "heading_subjects": [
+      "Cell Biology"
+    ],
+    "copyright_statement": "\u00a9 2025 Example Author(s).",
+    "copyright_year": "2025",
+    "keywords": [
+      "examples",
+      "testing"
+    ],
+    "funding_statements": [
+      "Example Foundation Grant 999"
+    ],
+    "word_count": "5000",
+    "ref_count": "42",
+    "fig_count": "3",
+    "abstracts": [
+      {
+        "text": "\n        This study examines example practices in a controlled setting.\n      ",
+        "abstract_type": null,
+        "language": null
+      }
+    ]
+  },
+  "contributors": {
+    "authors": [
+      {
+        "contrib_type": "author",
+        "surname": "Doe",
+        "given_names": "Jane",
+        "orcid": "0000-0001-2345-6789",
+        "emails": [
+          "jane.doe@example.com"
+        ],
+        "affiliation_ref_ids": [
+          "aff1"
+        ],
+        "is_corresponding": true,
+        "suffix": null,
+        "equal_contrib": false
+      },
+      {
+        "contrib_type": "author",
+        "surname": "Smith",
+        "given_names": "John",
+        "orcid": null,
+        "emails": [],
+        "affiliation_ref_ids": [
+          "aff2"
+        ],
+        "is_corresponding": false,
+        "suffix": null,
+        "equal_contrib": false
+      }
+    ],
+    "editors": [
+      {
+        "contrib_type": "editor",
+        "surname": "Lee",
+        "given_names": "Kim",
+        "orcid": null,
+        "emails": [],
+        "affiliation_ref_ids": [],
+        "is_corresponding": false,
+        "suffix": null,
+        "equal_contrib": false
+      }
+    ],
+    "other_contributors": [],
+    "affiliations": [
+      {
+        "element_id": "aff1",
+        "label": "1",
+        "department": null,
+        "institution": "University of Example",
+        "city": null,
+        "state": null,
+        "country": "USA",
+        "raw_text": "\n        1\n        University of Example\n        USA\n      "
+      },
+      {
+        "element_id": "aff2",
+        "label": "2",
+        "department": null,
+        "institution": "Example Institute",
+        "city": null,
+        "state": null,
+        "country": "UK",
+        "raw_text": "\n        2\n        Example Institute\n        UK\n      "
+      }
+    ]
+  },
+  "journal": {
+    "journal_title": "Journal of Examples",
+    "journal_id": "EX",
+    "issns": [
+      [
+        "epub",
+        "1234-5678"
+      ],
+      [
+        "ppub",
+        "8765-4321"
+      ]
+    ],
+    "publisher_name": "Example Press",
+    "volume": "12",
+    "issue": "3",
+    "fpage": "100",
+    "lpage": "110",
+    "elocation_id": "e12345",
+    "doi_related_ids": [
+      "10.1234/example.2025.001"
+    ],
+    "abbrev_titles": [
+      [
+        "pubmed",
+        "J. Ex."
+      ]
+    ]
+  },
+  "workflow": {
+    "events": [
+      {
+        "event_tag": "event",
+        "fields": [
+          [
+            "action",
+            "submitted"
+          ],
+          [
+            "date",
+            "2025-01-10"
+          ]
+        ]
+      },
+      {
+        "event_tag": "event",
+        "fields": [
+          [
+            "action",
+            "accepted"
+          ],
+          [
+            "date",
+            "2025-02-20"
+          ]
+        ]
+      }
+    ]
+  },
+  "custom": {
+    "entries": [
+      {
+        "name": "review-type",
+        "value_text": "single-blind",
+        "named_content": [],
+        "attributes": [
+          [
+            "specific-use",
+            "question"
+          ],
+          [
+            "data-reviewer-email",
+            "reviewer@example.com"
+          ],
+          [
+            "data-version",
+            "Original"
+          ]
+        ]
+      },
+      {
+        "name": "preprint-flag",
+        "value_text": "yes",
+        "named_content": [
+          {
+            "content_type": "flag",
+            "text": "yes"
+          }
+        ],
+        "attributes": []
+      }
+    ]
+  },
+  "assets": {
+    "assets": [
+      {
+        "asset_tag": "fig",
+        "element_id": "fig1",
+        "label": "Figure 1",
+        "file_references": [
+          {
+            "referencing_tag": "graphic",
+            "attribute_name": "href",
+            "value": "fig1.jpg"
+          }
+        ]
+      },
+      {
+        "asset_tag": "table-wrap",
+        "element_id": "tbl1",
+        "label": "Table 1",
+        "file_references": []
+      },
+      {
+        "asset_tag": "supplementary-material",
+        "element_id": "supp1",
+        "label": null,
+        "file_references": [
+          {
+            "referencing_tag": "supplementary-material",
+            "attribute_name": "href",
+            "value": "supp1.pdf"
+          }
+        ]
+      }
+    ]
+  },
+  "cross_references": {
+    "id_index": [
+      [
+        "aff1",
+        "aff"
+      ],
+      [
+        "aff2",
+        "aff"
+      ],
+      [
+        "fig1",
+        "fig"
+      ],
+      [
+        "supp1",
+        "supplementary-material"
+      ],
+      [
+        "tbl1",
+        "table-wrap"
+      ]
+    ],
+    "references": [
+      {
+        "referencing_tag": "xref",
+        "referencing_ref_type": "aff",
+        "attribute_name": "rid",
+        "target_ids": [
+          "aff1"
+        ]
+      },
+      {
+        "referencing_tag": "xref",
+        "referencing_ref_type": "aff",
+        "attribute_name": "rid",
+        "target_ids": [
+          "aff2"
+        ]
+      },
+      {
+        "referencing_tag": "xref",
+        "referencing_ref_type": "fig",
+        "attribute_name": "rid",
+        "target_ids": [
+          "fig1"
+        ]
+      },
+      {
+        "referencing_tag": "xref",
+        "referencing_ref_type": "bibr",
+        "attribute_name": "rid",
+        "target_ids": [
+          "ref1",
+          "ref2"
+        ]
+      }
+    ]
+  },
+  "diagnostics": []
+}

@@ -1,0 +1,12 @@
+doctype_public_id: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.3 20210610//EN"
+doctype_system_id: "JATS-journalpublishing1-3.dtd"
+article_type: research-article
+dtd_version: "1.3"
+default_xml_lang: en
+encoding: UTF-8
+namespace_prefixes:
+  - mml
+  - xlink
+  - xsi
+  - ali
+pretty_indent_spaces: 0

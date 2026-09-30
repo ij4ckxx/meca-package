@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/reviews-xml.schema.json",
+  "title": "ReviewsXmlConfig",
+  "description": "Validates config/reviews-xml.yaml — Business Rule Book BR-096-125.",
+  "type": "object",
+  "required": [
+    "doctype_public_id",
+    "doctype_system_id",
+    "encoding",
+    "content_version",
+    "pretty_indent_spaces",
+    "blinding",
+    "permission_to_publish",
+    "permission_to_transfer",
+    "review_item_data_type",
+    "reviews_filename_pattern",
+    "scorecard_review_item_title",
+    "decline_review_item_title",
+    "decision_review_item_title",
+    "duplicate_correspondence_review_item_title",
+    "extended_history_review_item_title"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "doctype_public_id": { "type": "string", "minLength": 1 },
+    "doctype_system_id": { "type": "string", "minLength": 1 },
+    "encoding": { "type": "string", "minLength": 1 },
+    "content_version": { "type": "string", "minLength": 1 },
+    "pretty_indent_spaces": { "type": "integer", "minimum": 0 },
+    "blinding": { "type": "string", "minLength": 1 },
+    "permission_to_publish": { "type": "string", "minLength": 1 },
+    "permission_to_transfer": { "type": "string", "minLength": 1 },
+    "review_item_data_type": { "type": "string", "minLength": 1 },
+    "reviews_filename_pattern": { "type": "string", "minLength": 1 },
+    "scorecard_review_item_title": { "type": "string", "minLength": 1 },
+    "decline_review_item_title": { "type": "string", "minLength": 1 },
+    "decision_review_item_title": { "type": "string", "minLength": 1 },
+    "duplicate_correspondence_review_item_title": { "type": "string", "minLength": 1 },
+    "extended_history_review_item_title": { "type": "string", "minLength": 1 }
+  }
+}

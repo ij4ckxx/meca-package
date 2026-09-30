@@ -1,0 +1,11 @@
+# Deliberately carries an unconfirmed ADR-007 placeholder value, used to
+# unit-test that ConfigLoader._reject_placeholder_values raises
+# ConfigurationError rather than loading a business value pending sign-off.
+journal_id: "placeholder-journal"
+display_name: "Placeholder Journal"
+doi_prefix: "10.9999"
+acronym: "<CONFIRM-VIA-ADR-007>"
+article_type_mapping_ref: "article-type-mapping.yaml#placeholder-journal"
+license_templates_ref: "license-templates.yaml"
+doi_registry_scope: "per-journal"
+publisher_id: "example-publisher"

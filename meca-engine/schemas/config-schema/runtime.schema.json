@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/runtime.schema.json",
+  "title": "RuntimeConfig",
+  "description": "Validates config/runtime.yaml — 12_LLD_03_CONFIG_LOGGING_EXCEPTIONS.md §5.7.",
+  "type": "object",
+  "required": ["concurrency", "retry", "validation", "staging", "output", "checkpoint", "doi_registry", "packaging", "input", "dashboard", "logging"],
+  "additionalProperties": false,
+  "properties": {
+    "concurrency": {
+      "type": "object",
+      "required": ["worker_count", "mechanism"],
+      "additionalProperties": false,
+      "properties": {
+        "worker_count": { "type": "integer", "minimum": 1 },
+        "mechanism": { "type": "string", "enum": ["process_pool", "thread_pool", "async"] }
+      }
+    },
+    "retry": {
+      "type": "object",
+      "required": ["max_attempts", "backoff_base_seconds", "backoff_multiplier", "backoff_max_seconds"],
+      "additionalProperties": false,
+      "properties": {
+        "max_attempts": { "type": "integer", "minimum": 0 },
+        "backoff_base_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "backoff_multiplier": { "type": "number", "minimum": 1 },
+        "backoff_max_seconds": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": ["dtd_validation_enabled", "severity_block_threshold"],
+      "additionalProperties": false,
+      "properties": {
+        "dtd_validation_enabled": { "type": "boolean" },
+        "severity_block_threshold": {
+          "type": "string",
+          "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW"]
+        }
+      }
+    },
+    "staging": {
+      "type": "object",
+      "required": ["strategy", "working_dir_root"],
+      "additionalProperties": false,
+      "properties": {
+        "strategy": { "type": "string", "enum": ["full_local_staging", "streaming", "hybrid"] },
+        "working_dir_root": { "type": "string", "minLength": 1 }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["operational_bucket", "archival_bucket"],
+      "additionalProperties": false,
+      "properties": {
+        "operational_bucket": { "type": "string", "minLength": 1 },
+        "archival_bucket": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string", "enum": ["LOCAL", "S3", "SFTP"] },
+        "local_path": { "type": "string", "minLength": 1 }
+      }
+    },
+    "checkpoint": {
+      "type": "object",
+      "required": ["backend"],
+      "additionalProperties": false,
+      "properties": {
+        "backend": { "type": "string", "minLength": 1 }
+      }
+    },
+    "doi_registry": {
+      "type": "object",
+      "required": ["backend"],
+      "additionalProperties": false,
+      "properties": {
+        "backend": { "type": "string", "minLength": 1 }
+      }
+    },
+    "packaging": {
+      "type": "object",
+      "required": ["zip_compression", "zip_compresslevel", "staging_subdir_name", "overwrite_policy"],
+      "additionalProperties": false,
+      "properties": {
+        "zip_compression": { "type": "string", "enum": ["deflated", "stored"] },
+        "zip_compresslevel": { "type": ["integer", "null"], "minimum": 0, "maximum": 9 },
+        "staging_subdir_name": { "type": "string", "minLength": 1 },
+        "overwrite_policy": { "type": "string", "enum": ["fail", "overwrite", "skip"] }
+      }
+    },
+    "input": {
+      "type": "object",
+      "description": "Archive Migration Platform Phase 1 (ADR-030).",
+      "required": ["provider", "local_path"],
+      "additionalProperties": false,
+      "properties": {
+        "provider": { "type": "string", "enum": ["LOCAL", "S3"] },
+        "local_path": { "type": "string", "minLength": 1 }
+      }
+    },
+    "dashboard": {
+      "type": "object",
+      "description": "Archive Migration Platform Phase 1 (ADR-030).",
+      "required": ["reports_path"],
+      "additionalProperties": false,
+      "properties": {
+        "reports_path": { "type": "string", "minLength": 1 }
+      }
+    },
+    "logging": {
+      "type": "object",
+      "description": "Archive Migration Platform Phase 1 (ADR-030).",
+      "required": ["level"],
+      "additionalProperties": false,
+      "properties": {
+        "level": { "type": "string", "enum": ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] }
+      }
+    }
+  }
+}

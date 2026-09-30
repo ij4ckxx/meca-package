@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/article-type-mapping.schema.json",
+  "title": "ArticleTypeMappingConfig",
+  "description": "Validates config/article-type-mapping.yaml — ADR-001 / BR-057.",
+  "type": "object",
+  "required": ["mappings", "default_article_type"],
+  "additionalProperties": false,
+  "properties": {
+    "mappings": {
+      "type": "object",
+      "description": "Source display-channel text to article.xml article-type.",
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "default_article_type": { "type": "string", "minLength": 1 }
+  }
+}

@@ -1,0 +1,5 @@
+# Deliberately invalid: missing every field except `concurrency`, used to
+# unit-test that ConfigLoader raises ConfigurationError on schema failure.
+concurrency:
+  worker_count: 4
+  mechanism: process_pool

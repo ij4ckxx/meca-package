@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/license-templates.schema.json",
+  "title": "LicenseTemplatesConfig",
+  "description": "Validates config/license-templates.yaml — 12_LLD_03_CONFIG_LOGGING_EXCEPTIONS.md §5.4 / ADR-002. Keyed by the source 'License Type' custom-meta value; no wildcard/default entry is permitted (an unmapped License Type must raise LicenseMappingError, never guess).",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "required": ["license_type_attr", "license_p", "ext_link_href"],
+    "additionalProperties": false,
+    "properties": {
+      "license_type_attr": { "type": "string", "minLength": 1 },
+      "license_p": { "type": "string", "minLength": 1 },
+      "ext_link_href": { "type": "string", "format": "uri" }
+    }
+  }
+}

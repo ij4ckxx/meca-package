@@ -1,0 +1,170 @@
+{
+  "encoding": {
+    "declared_encoding": "UTF-8",
+    "bom_encoding": null,
+    "effective_encoding": "UTF-8"
+  },
+  "doctype": {
+    "name": "article",
+    "public_id": "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.3 20210610//EN",
+    "system_id": "JATS-journalpublishing1-3.dtd",
+    "has_internal_subset": false
+  },
+  "root": {
+    "tag": "article",
+    "namespace_uri": null,
+    "attributes": [
+      {
+        "name": "article-type",
+        "namespace_uri": null,
+        "value": "research-article"
+      }
+    ],
+    "children": [
+      {
+        "tag": "front",
+        "namespace_uri": null,
+        "attributes": [],
+        "children": [
+          {
+            "tag": "article-meta",
+            "namespace_uri": null,
+            "attributes": [],
+            "children": [
+              {
+                "tag": "title-group",
+                "namespace_uri": null,
+                "attributes": [],
+                "children": [
+                  {
+                    "tag": "article-title",
+                    "namespace_uri": null,
+                    "attributes": [],
+                    "children": [],
+                    "text": "A Study of Café Culture — 中文 Title",
+                    "tail": null
+                  }
+                ],
+                "text": null,
+                "tail": "\n      "
+              },
+              {
+                "tag": "aff",
+                "namespace_uri": null,
+                "attributes": [
+                  {
+                    "name": "id",
+                    "namespace_uri": null,
+                    "value": "aff1"
+                  }
+                ],
+                "children": [],
+                "text": "University of Example",
+                "tail": "\n      "
+              },
+              {
+                "tag": "contrib",
+                "namespace_uri": null,
+                "attributes": [],
+                "children": [
+                  {
+                    "tag": "xref",
+                    "namespace_uri": null,
+                    "attributes": [
+                      {
+                        "name": "rid",
+                        "namespace_uri": null,
+                        "value": "aff1"
+                      }
+                    ],
+                    "children": [],
+                    "text": null,
+                    "tail": "\n      "
+                  }
+                ],
+                "text": "\n        ",
+                "tail": "\n    "
+              }
+            ],
+            "text": "\n      ",
+            "tail": "\n  "
+          }
+        ],
+        "text": "\n    ",
+        "tail": "\n  "
+      },
+      {
+        "tag": "body",
+        "namespace_uri": null,
+        "attributes": [],
+        "children": [
+          {
+            "tag": "p",
+            "namespace_uri": null,
+            "attributes": [],
+            "children": [
+              {
+                "tag": "bold",
+                "namespace_uri": null,
+                "attributes": [],
+                "children": [],
+                "text": "bold",
+                "tail": " and a trailing tail."
+              }
+            ],
+            "text": "Some text with ",
+            "tail": "\n    "
+          },
+          {
+            "tag": "fig",
+            "namespace_uri": null,
+            "attributes": [],
+            "children": [
+              {
+                "tag": "graphic",
+                "namespace_uri": null,
+                "attributes": [
+                  {
+                    "name": "href",
+                    "namespace_uri": "http://www.w3.org/1999/xlink",
+                    "value": "fig1.jpg"
+                  }
+                ],
+                "children": [],
+                "text": null,
+                "tail": null
+              }
+            ],
+            "text": null,
+            "tail": "\n    "
+          },
+          {
+            "tag": "supplementary-material",
+            "namespace_uri": null,
+            "attributes": [
+              {
+                "name": "href",
+                "namespace_uri": "http://www.w3.org/1999/xlink",
+                "value": "supp1.pdf"
+              }
+            ],
+            "children": [],
+            "text": null,
+            "tail": "\n  "
+          }
+        ],
+        "text": "\n    ",
+        "tail": "\n"
+      }
+    ],
+    "text": "\n  ",
+    "tail": null
+  },
+  "namespace_declarations": [
+    {
+      "prefix": "xlink",
+      "uri": "http://www.w3.org/1999/xlink"
+    }
+  ],
+  "diagnostics": []
+}

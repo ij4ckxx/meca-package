@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/publisher-abbreviation-mapping.schema.json",
+  "title": "PublisherAbbreviationMappingConfig",
+  "description": "Validates config/publisher-abbreviation-mapping.yaml — BR-164.",
+  "type": "object",
+  "required": ["mappings"],
+  "additionalProperties": false,
+  "properties": {
+    "mappings": {
+      "type": "object",
+      "description": "journal-id[@journal-id-type=publisher-id] text to publisher abbreviation. Deliberately no default/fallback field: an unrecognized key must never be guessed at.",
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    }
+  }
+}

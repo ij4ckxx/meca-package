@@ -1,0 +1,24 @@
+# reviews.xml generator settings — Business Rule Book BR-096-125.
+# Confirmed 3/3 (root/DOCTYPE/namespaces/encoding) or 2/3-canonical
+# (BR-098's per-review attribute schema — CS-2025-6808's own reference
+# package omits all four; classified a superseded/incomplete pattern,
+# not replicated — see the Reviews Decision Log).
+
+doctype_public_id: "-//MECA//DTD Reviews v1.0//en"
+doctype_system_id: "../DTD/reviews-1.0.dtd"
+encoding: UTF-8
+content_version: "1.0"
+pretty_indent_spaces: 2
+
+blinding: single
+permission_to_publish: "yes"
+permission_to_transfer: "yes"
+review_item_data_type: text
+
+reviews_filename_pattern: "{article_id}_reviews.xml"
+
+scorecard_review_item_title: "Reviewer Scorecard Responses"
+decline_review_item_title: "Reviewer Assignment Status"
+decision_review_item_title: "Editorial Decision"
+duplicate_correspondence_review_item_title: "Correspondence Log Entry"
+extended_history_review_item_title: "Workflow History Entry"

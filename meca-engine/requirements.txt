@@ -1,0 +1,7 @@
+# Runtime dependencies — mirrors [project.dependencies] in pyproject.toml.
+# Kept in sync manually; pyproject.toml remains the single source of truth.
+# Used by Docker build layers and any pip-only install path that does not
+# resolve dependencies from pyproject.toml directly.
+PyYAML>=6.0.1
+jsonschema>=4.21.0
+click>=8.1.7

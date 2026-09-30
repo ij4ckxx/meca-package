@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/manifest-xml.schema.json",
+  "title": "ManifestXmlConfig",
+  "description": "Validates config/manifest-xml.yaml — Business Rule Book BR-076-095.",
+  "type": "object",
+  "required": [
+    "doctype_public_id",
+    "doctype_system_id",
+    "encoding",
+    "manifest_version",
+    "pretty_indent_spaces",
+    "item_article_description_template",
+    "item_reviews_description",
+    "item_transfer_description",
+    "article_filename_pattern",
+    "reviews_filename_pattern",
+    "transfer_filename_pattern",
+    "file_item_id_prefix",
+    "file_item_description_template"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "doctype_public_id": { "type": "string", "minLength": 1 },
+    "doctype_system_id": { "type": "string", "minLength": 1 },
+    "encoding": { "type": "string", "minLength": 1 },
+    "manifest_version": { "type": "string", "minLength": 1 },
+    "pretty_indent_spaces": { "type": "integer", "minimum": 0 },
+    "item_article_description_template": { "type": "string", "minLength": 1 },
+    "item_reviews_description": { "type": "string", "minLength": 1 },
+    "item_transfer_description": { "type": "string", "minLength": 1 },
+    "article_filename_pattern": { "type": "string", "minLength": 1 },
+    "reviews_filename_pattern": { "type": "string", "minLength": 1 },
+    "transfer_filename_pattern": { "type": "string", "minLength": 1 },
+    "file_item_id_prefix": { "type": "string", "minLength": 1 },
+    "file_item_description_template": { "type": "string", "minLength": 1 }
+  }
+}

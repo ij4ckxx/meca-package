@@ -1,0 +1,37 @@
+# Schema-conformant fixture for unit-testing ConfigLoader.load_runtime_config.
+# Fictitious operational values — used only in tests/unit/config/.
+concurrency:
+  worker_count: 4
+  mechanism: process_pool
+retry:
+  max_attempts: 3
+  backoff_base_seconds: 1
+  backoff_multiplier: 2.0
+  backoff_max_seconds: 30
+validation:
+  dtd_validation_enabled: true
+  severity_block_threshold: HIGH
+staging:
+  strategy: full_local_staging
+  working_dir_root: /tmp/meca-engine-test-work
+output:
+  operational_bucket: test-operational-bucket
+  archival_bucket: test-archival-bucket
+  provider: LOCAL
+  local_path: ./test-generated-packages
+checkpoint:
+  backend: postgres
+doi_registry:
+  backend: postgres
+packaging:
+  zip_compression: deflated
+  zip_compresslevel: 6
+  staging_subdir_name: package_staging
+  overwrite_policy: fail
+input:
+  provider: LOCAL
+  local_path: ./test-input
+dashboard:
+  reports_path: ./test-reports
+logging:
+  level: INFO

@@ -1,0 +1,32 @@
+# Extension -> MIME type lookup table — 12_LLD_03_CONFIG_LOGGING_EXCEPTIONS.md
+# §5.6 / ADR-008 / ADR-009. Unlike journal/publisher configuration, this is
+# operational/technical config, not business-value data requiring per-journal
+# sign-off: extension-to-MIME-type mappings are standard, publicly-documented
+# facts (IANA media types), not a business decision — populated here in
+# Milestone 5B so File Resolution is testable against real reference
+# packages. `unmapped_extension_policy`/`unmapped_extension_default` follow
+# ADR-009's recommended Option 3 (soft fallback, batch continues).
+
+mappings:
+  .docx: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+  .doc: application/msword
+  .pdf: application/pdf
+  .jpg: image/jpeg
+  .jpeg: image/jpeg
+  .png: image/png
+  .gif: image/gif
+  .tif: image/tiff
+  .tiff: image/tiff
+  .bmp: image/bmp
+  .eps: application/postscript
+  .xlsx: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  .xls: application/vnd.ms-excel
+  .csv: text/csv
+  .txt: text/plain
+  .xml: application/xml
+  .zip: application/zip
+  .mp4: video/mp4
+  .mov: video/quicktime
+
+unmapped_extension_policy: warn_and_default
+unmapped_extension_default: application/octet-stream

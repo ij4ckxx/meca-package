@@ -1,0 +1,23 @@
+# manifest.xml generator settings — Business Rule Book BR-076-095.
+# Confirmed 3/3 against the real reference packages (Output/*.zip),
+# except item_id_prefix/file_item_description_template (BR-084/BR-085:
+# the observed patterns are confirmed clerical defects in the reference
+# packages, not rules to replicate — these values implement each rule's
+# own documented recommended replacement instead).
+
+doctype_public_id: "-//MECA//DTD Manifest v1.0//en"
+doctype_system_id: "./schema/manifest-1.0.dtd"
+encoding: UTF-8
+manifest_version: "1"
+pretty_indent_spaces: 2
+
+item_article_description_template: "Article metadata exported from JATS (publisher-id: {publisher_id})"
+item_reviews_description: "MECA reviews.xml generated from JATS custom-meta and history dates"
+item_transfer_description: "MECA transfer.xml with source/destination info"
+
+article_filename_pattern: "{article_id}_article.xml"
+reviews_filename_pattern: "{article_id}_reviews.xml"
+transfer_filename_pattern: "{article_id}_transfer.xml"
+
+file_item_id_prefix: "file-"
+file_item_description_template: "{category} — {original_filename} ({size_bytes} bytes)"

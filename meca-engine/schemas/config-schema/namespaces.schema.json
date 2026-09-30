@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/namespaces.schema.json",
+  "title": "NamespaceConfig",
+  "description": "Validates config/namespaces.yaml — Generator Framework (Milestone 6A).",
+  "type": "object",
+  "required": ["namespaces"],
+  "additionalProperties": false,
+  "properties": {
+    "namespaces": {
+      "type": "object",
+      "description": "Namespace prefix (may be empty string for a default namespace) to URI.",
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    }
+  }
+}

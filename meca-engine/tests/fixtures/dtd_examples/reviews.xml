@@ -1,0 +1,545 @@
+<?xml version="1.0"?>
+<!DOCTYPE review-group PUBLIC "-//MECA//DTD Reviews v1.0//en" "../schema/reviews-1.0.dtd">
+<review-group xmlns="https://manuscriptexchange.org/schema/reviews" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ali="http://www.niso.org/schemas/ali/1.0/" content-version="0">
+  <review review-type="review" review-version="0">
+    <review-item-group>
+      <review-item review-item-type="recommendation" is-confidential="yes" sequence-number="">
+        <review-item-question>
+          <title>Rating 1</title>
+          <alt-title/>
+          <text>Recommendation Term</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Reject and Transfer</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="comments" is-confidential="yes">
+        <review-item-question>
+          <title>Comments 1</title>
+          <alt-title/>
+          <text>Comments to Editor</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>This is a great paper but not for this journal.</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="comments" sequence-number="" is-confidential="no">
+        <review-item-question>
+          <title>Comments 2</title>
+          <alt-title/>
+          <text>Comments to Author</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Nice job but needs some work.</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="rating" sequence-number="1">
+        <review-item-question>
+          <title>Rating 2</title>
+          <alt-title/>
+          <text>On a scale of 1 to 10, how "novel" is the idea presented in this manuscript?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>5</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="rating" sequence-number="2">
+        <review-item-question>
+          <title>Rating 3</title>
+          <alt-title/>
+          <text>How would you best describe this manuscript?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Average</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="multiple-choice" sequence-number="3">
+        <review-item-question>
+          <title>Survey 1</title>
+          <alt-title/>
+          <text>What is your favorite color?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Red</review-item-data>
+        </review-item-response>
+        <review-item-response>
+          <review-item-data>Blue</review-item-data>
+        </review-item-response>
+        <review-item-response>
+          <review-item-data>Yellow</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="file" sequence-number="" is-confidential="yes">
+        <review-item-question>
+          <title>Supplemental Info 1</title>
+          <alt-title/>
+          <text>Reviewer Attachment</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data/>
+          <ext-link xlink:href="my manuscript.docx" xlink:title="description of the file"/>
+        </review-item-response>
+      </review-item>
+    </review-item-group>
+    <date date-type="submitted">
+      <year>2018</year>
+      <month>2</month>
+      <day>28</day>
+    </date>
+    <date date-type="due">
+      <year>2018</year>
+      <month>2</month>
+      <day>14</day>
+    </date>
+    <date date-type="assigned">
+      <year>2018</year>
+      <month>1</month>
+      <day>29</day>
+    </date>
+    <contrib-group>
+      <contrib contrib-type="reviewer">
+        <name>
+          <surname>Reviewer</surname>
+          <given-names>Bob</given-names>
+          <prefix>Dr.</prefix>
+        </name>
+        <contrib-id contrib-id-type="orcid">1234-0052-2141-3325</contrib-id>
+        <degrees>PhD</degrees>
+        <email>BReviewer@mit.edu</email>
+        <xref ref-type="aff" rid="aff1"/>
+      </contrib>
+      <aff id="aff1">
+        <institution-wrap>
+          <institution>Massachusetts Institution of Technology</institution>
+          <institution-id institution-id-type="Ringgold">12345</institution-id>
+        </institution-wrap>
+        <institution content-type="dept">Physics Department</institution>
+        <addr-line content-type="addrline1">77 Massachusetts Avenue</addr-line>
+        <addr-line content-type="addrline2">Suite 304</addr-line>
+        <addr-line content-type="addrline3">Room 5</addr-line>
+        <addr-line content-type="addrline4">Maildrop 501</addr-line>
+        <addr-line content-type="city">Cambridge</addr-line>
+        <addr-line content-type="state">MA</addr-line>
+        <addr-line content-type="country">United States</addr-line>
+        <addr-line content-type="country-code">us</addr-line>
+        <addr-line content-type="zip">02139</addr-line>
+        <fax>617-555-2321</fax>
+        <phone>617-253-1000</phone>
+      </aff>
+    </contrib-group>
+    <permissions>
+      <license>
+        <ali:license_ref xmlns:ali="http://www.niso.org/schemas/ali/1.0/" start_date="2019-08-20">http://www.examplesite.org/open_license.html</ali:license_ref>
+      </license>
+    </permissions>
+  </review>
+  <review review-type="review" review-version="0">
+    <review-item-group>
+      <review-item review-item-type="recommendation" sequence-number="" is-confidential="yes">
+        <review-item-question>
+          <title>Rating 1</title>
+          <alt-title/>
+          <text>Recommendation Term</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Major Revision</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="comments" sequence-number="" is-confidential="yes">
+        <review-item-question>
+          <title>Comments 1</title>
+          <alt-title/>
+          <text>Comments to Editor</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>This is a great paper but not for this journal.</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="comments" sequence-number="" is-confidential="no">
+        <review-item-question>
+          <title>Comments 2</title>
+          <alt-title/>
+          <text>Comments to Author</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Nice job but needs some work.</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="rating" sequence-number="1">
+        <review-item-question>
+          <title>Rating 2</title>
+          <alt-title/>
+          <text>On a scale of 1 to 10, how "novel" is the idea presented in this manuscript?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>5</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="rating" sequence-number="2">
+        <review-item-question>
+          <title>Rating 3</title>
+          <alt-title/>
+          <text>How would you describe this manuscript?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Average</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="multiple-choice" sequence-number="3">
+        <review-item-question>
+          <title/>
+          <alt-title/>
+          <text>What is your favorite color?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Red</review-item-data>
+        </review-item-response>
+        <review-item-response>
+          <review-item-data>Blue</review-item-data>
+        </review-item-response>
+        <review-item-response>
+          <review-item-data>Green</review-item-data>
+        </review-item-response>
+      </review-item>
+    </review-item-group>
+    <date date-type="submitted">
+      <year>2018</year>
+      <month>2</month>
+      <day>28</day>
+    </date>
+    <date date-type="due">
+      <year>2018</year>
+      <month>2</month>
+      <day>14</day>
+    </date>
+    <date date-type="assigned">
+      <year>2018</year>
+      <month>1</month>
+      <day>29</day>
+    </date>
+    <contrib-group>
+      <contrib contrib-type="reviewer">
+        <name>
+          <surname>Rabbit</surname>
+          <given-names>Roger</given-names>
+          <prefix>Dr.</prefix>
+        </name>
+        <!-- If the Reviewer does not have an authenticated ORCID do not
+write the <contrib-id> element to the XML file-->
+        <contrib-id/>
+        <degrees>PhD</degrees>
+        <email>BReviewer@ucr.edu</email>
+        <xref ref-type="aff" rid="aff2"/>
+      </contrib>
+      <aff id="aff2">
+        <institution-wrap>
+          <institution>University of California Riverside</institution>
+          <institution-id institution-id-type="Ringgold">8790</institution-id>
+        </institution-wrap>
+        <institution content-type="dept">Department of Psychology</institution>
+        <addr-line content-type="addrline1">900 University Avenue</addr-line>
+        <addr-line content-type="addrline2">Suite 304</addr-line>
+        <addr-line content-type="addrline3">Room 7</addr-line>
+        <addr-line content-type="addrline4">Maildrop 501</addr-line>
+        <addr-line content-type="city">Riverside</addr-line>
+        <addr-line content-type="state">CA</addr-line>
+        <addr-line content-type="country">United States</addr-line>
+        <addr-line content-type="country-code">us</addr-line>
+        <addr-line content-type="zip">92521</addr-line>
+        <fax>951-555-2321</fax>
+        <phone>951-827-1012</phone>
+      </aff>
+    </contrib-group>
+    <permissions>
+      <copyright-statement>Copyright &#xA9; 2018, Dr. Roger Rabbit, all rights reserved.</copyright-statement>
+      <copyright-year>2018</copyright-year>
+      <copyright-holder>Dr. Roger Rabbit</copyright-holder>
+    </permissions>
+  </review>
+  <review review-type="decision" review-version="1">
+    <review-item-group>
+      <review-item review-item-type="decision" sequence-number="" is-confidential="no">
+        <review-item-question>
+          <title/>
+          <alt-title/>
+          <text>Final Decision</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Reject and Transfer</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="comments" is-confidential="yes" sequence-number="">
+        <review-item-question>
+          <title>Comments 1</title>
+          <alt-title/>
+          <text>Comments to Editor</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>I recommend that we transfer this paper to a sister publication.</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="comments" sequence-number="" is-confidential="no">
+        <review-item-question>
+          <title>Comments 2</title>
+          <alt-title/>
+          <text>Comments to Author</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Nice job but needs some work. Please resubmit to Journal ABC</review-item-data>
+        </review-item-response>
+      </review-item>
+    </review-item-group>
+    <date date-type="submitted">
+      <year>2018</year>
+      <month>2</month>
+      <day>28</day>
+    </date>
+    <contrib-group>
+      <contrib contrib-type="Editor-in-Chief">
+        <name>
+          <surname>Editor</surname>
+          <given-names>Sally</given-names>
+          <prefix>Dr.</prefix>
+        </name>
+        <contrib-id contrib-id-type="orcid">0000-0003-2141-4459</contrib-id>
+        <degrees>PhD</degrees>
+        <email>SEditor@mit.edu</email>
+        <xref ref-type="aff" rid="aff3"/>
+      </contrib>
+      <aff id="aff3">
+        <institution-wrap>
+          <institution>Massachusetts Institution of Technology</institution>
+          <institution-id institution-id-type="Ringgold">12345</institution-id>
+        </institution-wrap>
+        <institution content-type="dept">Physics Department</institution>
+        <addr-line content-type="addrline1">77 Massachusetts Avenue</addr-line>
+        <addr-line content-type="addrline2">Suite 500</addr-line>
+        <addr-line content-type="addrline3">Room 1</addr-line>
+        <addr-line content-type="addrline4">Maildrop 714</addr-line>
+        <addr-line content-type="city">Cambridge</addr-line>
+        <addr-line content-type="state">MA</addr-line>
+        <addr-line content-type="country">United States</addr-line>
+        <addr-line content-type="country-code">us</addr-line>
+        <addr-line content-type="zip">02139</addr-line>
+        <fax>617-555-2321</fax>
+        <phone>617-253-1050</phone>
+      </aff>
+    </contrib-group>
+    <permissions>
+      <license>
+        <ali:license_ref xmlns:ali="http://www.niso.org/schemas/ali/1.0/" start_date="2018-02-28"/>
+      </license>
+    </permissions>
+  </review>
+  <review review-type="review" review-version="1">
+    <review-item-group>
+      <review-item review-item-type="recommendation" sequence-number="" is-confidential="yes">
+        <review-item-question>
+          <title>Rating 1</title>
+          <alt-title/>
+          <text>Recommendation Term</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Reject and Transfer</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="comments" sequence-number="" is-confidential="yes">
+        <review-item-question>
+          <title>Comments 1</title>
+          <alt-title/>
+          <text>Comments to Editor</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>This is a great paper but not for this journal.</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="comments" sequence-number="" is-confidential="no">
+        <review-item-question>
+          <title>Comments 2</title>
+          <alt-title/>
+          <text>Comments to Author</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Nice job but needs some work.</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="rating" sequence-number="1">
+        <review-item-question>
+          <title>Rating 2</title>
+          <alt-title/>
+          <text>On a scale of 1 to 10, how "novel" is the idea presented in this manuscript?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>5</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="rating" sequence-number="2">
+        <review-item-question>
+          <title>Rating 3</title>
+          <alt-title/>
+          <text>How would you describe this manuscript?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Awful</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="multiple-choice" sequence-number="3">
+        <review-item-question>
+          <title>Survey 1</title>
+          <alt-title/>
+          <text>What is your favorite color?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Red</review-item-data>
+        </review-item-response>
+        <review-item-response>
+          <review-item-data>Blue</review-item-data>
+        </review-item-response>
+        <review-item-response>
+          <review-item-data>Yellow</review-item-data>
+        </review-item-response>
+      </review-item>
+    </review-item-group>
+    <contrib-group>
+      <contrib contrib-type="Reviewer">
+        <name>
+          <surname>Reviewer</surname>
+          <given-names>Bob</given-names>
+          <prefix>Dr.</prefix>
+        </name>
+        <contrib-id contrib-id-type="orcid">1234-0052-2141-3325</contrib-id>
+        <degrees>PhD</degrees>
+        <email>BReviewer@mit.edu</email>
+        <xref ref-type="aff" rid="aff4"/>
+      </contrib>
+      <aff id="aff4">
+        <institution-wrap>
+          <institution>Massachusetts Institution of Technology</institution>
+          <institution-id institution-id-type="Ringgold">12345</institution-id>
+        </institution-wrap>
+        <institution content-type="dept">Physics Department</institution>
+        <addr-line content-type="addrline1">77 Massachusetts Avenue</addr-line>
+        <addr-line content-type="addrline2">Suite 304</addr-line>
+        <addr-line content-type="addrline3">Room 5</addr-line>
+        <addr-line content-type="addrline4">Maildrop 501</addr-line>
+        <addr-line content-type="city">Cambridge</addr-line>
+        <addr-line content-type="state">MA</addr-line>
+        <addr-line content-type="country">United States</addr-line>
+        <addr-line content-type="country-code">us</addr-line>
+        <addr-line content-type="zip">02139</addr-line>
+        <fax>617-555-2321</fax>
+        <phone>617-253-1000</phone>
+      </aff>
+    </contrib-group>
+  </review>
+  <review review-type="review" review-version="1">
+    <review-item-group>
+      <review-item review-item-type="recommendation" sequence-number="" is-confidential="yes">
+        <review-item-question>
+          <title>Rating 1</title>
+          <alt-title/>
+          <text>Recommendation Term</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Reject and Transfer</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="comments" sequence-number="" is-confidential="yes">
+        <review-item-question>
+          <title>Comments 1</title>
+          <alt-title/>
+          <text>Comments to Editor</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>This is a great paper but not for this journal.</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="comments" sequence-number="" is-confidential="no">
+        <review-item-question>
+          <title>Comments 2</title>
+          <alt-title/>
+          <text>Comments to Author</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>Nice job but needs some work.</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="rating" sequence-number="1">
+        <review-item-question>
+          <title>Rating 2</title>
+          <alt-title/>
+          <text>On a scale of 1 to 10, how "novel" is the idea presented in this manuscript?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>5</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="rating" sequence-number="2">
+        <review-item-question>
+          <title>Rating 3</title>
+          <alt-title/>
+          <text>How would you describe this manuscript?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data review-item-data-type="decimal">9.1</review-item-data>
+        </review-item-response>
+      </review-item>
+      <review-item review-item-type="text" sequence-number="3">
+        <review-item-question>
+          <title>Comments 3</title>
+          <alt-title/>
+          <text>When are you planning to revise this paper?</text>
+        </review-item-question>
+        <review-item-response>
+          <review-item-data>08/27/2025</review-item-data>
+        </review-item-response>
+      </review-item>
+    </review-item-group>
+    <date date-type="submitted">
+      <year>2018</year>
+      <month>2</month>
+      <day>28</day>
+    </date>
+    <date date-type="due">
+      <year>2018</year>
+      <month>2</month>
+      <day>14</day>
+    </date>
+    <date date-type="assigned">
+      <year>2018</year>
+      <month>1</month>
+      <day>29</day>
+    </date>
+    <contrib-group>
+      <contrib contrib-type="Reviewer">
+        <name>
+          <surname>Rabbit</surname>
+          <given-names>Roger</given-names>
+          <prefix>Dr.</prefix>
+        </name>
+        <contrib-id contrib-id-type="orcid">1234-0052-2141-3325</contrib-id>
+        <degrees>PhD</degrees>
+        <email>BReviewer@mit.edu</email>
+        <xref ref-type="aff" rid="aff5"/>
+      </contrib>
+      <aff id="aff5">
+        <institution-wrap>
+          <institution>University of California Riverside</institution>
+          <institution-id institution-id-type="Ringgold">8790</institution-id>
+        </institution-wrap>
+        <institution content-type="dept">Department of Psychology</institution>
+        <addr-line content-type="addrline1">900 University Avenue</addr-line>
+        <addr-line content-type="addrline2">Suite 304</addr-line>
+        <addr-line content-type="addrline3">Room 7</addr-line>
+        <addr-line content-type="addrline4">Maildrop 501</addr-line>
+        <addr-line content-type="city">Riverside</addr-line>
+        <addr-line content-type="state">CA</addr-line>
+        <addr-line content-type="country">United States</addr-line>
+        <addr-line content-type="country-code">us</addr-line>
+        <addr-line content-type="zip">92521</addr-line>
+        <fax>951-555-2321</fax>
+        <phone>951-827-1012</phone>
+      </aff>
+    </contrib-group>
+  </review>
+</review-group>

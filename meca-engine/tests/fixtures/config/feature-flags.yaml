@@ -1,0 +1,5 @@
+# Schema-conformant fixture for unit-testing ConfigLoader.load_feature_flags.
+reviews_include_duplicate_correspondence: true
+reviews_extended_history_scope: false
+strict_replication_mode: false
+allow_filename_fallback: true

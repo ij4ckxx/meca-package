@@ -1,0 +1,27 @@
+# Behavioral toggles — 12_LLD_03_CONFIG_LOGGING_EXCEPTIONS.md §5.8.
+# Operational/behavioral, not business-value, data — populated here in
+# Milestone 1 with the defaults recommended by their governing ADRs.
+
+# ADR-004: include the raw correspondence-log duplicate of a formally
+# scored review, alongside the formal review itself.
+reviews_include_duplicate_correspondence: true
+
+# ADR-005: extract author-suggested reviewers, editor-reassignment history,
+# and post-acceptance copyediting/proofing query logs into reviews.xml.
+reviews_extended_history_scope: true
+
+# ADR-031: false = "clean mode" (production default — never replicate a
+# defect found in the hand-built sample packages). true = "strict
+# replication mode", used only by the golden-file regression test suite
+# (14_LLD_05_TESTING_DEPLOYMENT_STANDARDS.md §11.3) to prove the engine can
+# still reproduce the samples byte-for-byte, defects included, for
+# historical/audit comparison. Must never be true outside that test suite.
+strict_replication_mode: false
+
+# ADR-032 (Milestone 10, "Generate With Warnings"): true = derive a
+# missing FileEntry filename from declared_path_hint for generation
+# purposes and record a BR013_FALLBACK_FILENAME_FROM_PATH warning,
+# instead of aborting with FileReferenceMissingError. false = restore
+# the pre-Milestone-10 strict behavior (BR-013/016/017 enforced exactly
+# as written, no exceptions). Product default is true.
+allow_filename_fallback: true

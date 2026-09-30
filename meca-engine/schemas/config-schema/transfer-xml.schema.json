@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/transfer-xml.schema.json",
+  "title": "TransferXmlConfig",
+  "description": "Validates config/transfer-xml.yaml — Business Rule Book BR-126-140.",
+  "type": "object",
+  "required": [
+    "doctype_public_id",
+    "doctype_system_id",
+    "transfer_version",
+    "publication_type",
+    "pretty_indent_spaces",
+    "authentication_code_separator",
+    "processing_instructions",
+    "processing_comments_template",
+    "raw_xml_filename_pattern",
+    "transfer_filename_pattern",
+    "source_section_comment",
+    "destination_section_comment",
+    "instructions_section_comment"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "doctype_public_id": { "type": "string", "minLength": 1 },
+    "doctype_system_id": { "type": "string", "minLength": 1 },
+    "transfer_version": { "type": "string", "minLength": 1 },
+    "publication_type": { "type": "string", "minLength": 1 },
+    "pretty_indent_spaces": { "type": "integer", "minimum": 0 },
+    "authentication_code_separator": { "type": "string", "minLength": 1 },
+    "processing_instructions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "processing_comments_template": { "type": "string", "minLength": 1 },
+    "raw_xml_filename_pattern": { "type": "string", "minLength": 1 },
+    "transfer_filename_pattern": { "type": "string", "minLength": 1 },
+    "source_section_comment": { "type": "string", "minLength": 1 },
+    "destination_section_comment": { "type": "string", "minLength": 1 },
+    "instructions_section_comment": { "type": "string", "minLength": 1 }
+  }
+}

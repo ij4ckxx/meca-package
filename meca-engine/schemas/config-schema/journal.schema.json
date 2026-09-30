@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://meca-engine/schemas/config-schema/journal.schema.json",
+  "title": "JournalConfig",
+  "description": "Validates config/journals/<journal-id>.yaml — 12_LLD_03_CONFIG_LOGGING_EXCEPTIONS.md §5.2. Structural shape only; population of real journals is a business-value decision (ADR-007) deferred beyond Milestone 1.",
+  "type": "object",
+  "required": [
+    "journal_id",
+    "display_name",
+    "doi_prefix",
+    "acronym",
+    "article_type_mapping_ref",
+    "license_templates_ref",
+    "doi_registry_scope",
+    "publisher_id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "journal_id": { "type": "string", "minLength": 1 },
+    "display_name": { "type": "string", "minLength": 1 },
+    "doi_prefix": { "type": "string", "pattern": "^10\\.[0-9]+$" },
+    "acronym": { "type": "string", "minLength": 1 },
+    "article_type_mapping_ref": { "type": "string", "minLength": 1 },
+    "license_templates_ref": { "type": "string", "minLength": 1 },
+    "doi_registry_scope": { "type": "string", "enum": ["per-journal", "per-run", "global"] },
+    "publisher_id": { "type": "string", "minLength": 1 }
+  }
+}
