@@ -140,3 +140,32 @@ def test_create_input_provider_selects_s3() -> None:
 def test_create_input_provider_rejects_unknown_provider() -> None:
     with pytest.raises(ProviderNotConfiguredError):
         create_input_provider(InputSettings(provider="FTP", local_path="unused"))
+
+
+def test_s3_input_provider_list_articles(monkeypatch) -> None:
+    provider = S3InputProvider(bucket="test-bucket", prefix="articles/")
+
+    class FakePaginator:
+        def paginate(self, **kwargs):
+            return [
+                {
+                    "Contents": [
+                        {"Key": "articles/CS20240001.zip"},
+                        {"Key": "articles/CS20240002.zip"},
+                        {"Key": "articles/__MACOSX/CS20240001.zip"},
+                    ],
+                    "CommonPrefixes": [
+                        {"Prefix": "articles/CS20240003/"},
+                    ],
+                }
+            ]
+
+    class FakeClient:
+        def get_paginator(self, operation_name):
+            return FakePaginator()
+
+    monkeypatch.setattr(provider, "_get_client", lambda: FakeClient())
+    article_ids = provider.list_articles()
+
+    assert article_ids == ("CS20240001", "CS20240002", "CS20240003")
+

@@ -17,7 +17,7 @@ unpopulated in ``config/`` until the relevant ADRs are confirmed — see
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -366,6 +366,44 @@ class FeatureFlagsConfig:
 
 
 @dataclass(frozen=True)
+class S3EnvironmentSettings:
+    """AWS S3 environment-variable-sourced settings.
+
+    Attributes:
+        bucket_name: Target S3 bucket name.
+        prefix: Key prefix within the bucket (e.g. 'ppl/').
+        region: AWS region (e.g. 'us-east-1').
+    """
+
+    bucket_name: str = ""
+    prefix: str = ""
+    region: str = "us-east-1"
+
+
+@dataclass(frozen=True)
+class SftpEnvironmentSettings:
+    """SFTP destination environment-variable-sourced settings.
+
+    Attributes:
+        host: SFTP server hostname.
+        port: SFTP server port (default 22).
+        user: SFTP username.
+        password: SFTP password.
+        remote_dir: Remote folder path to store packages (default '/sftp/meca').
+        key_path: Path to optional SSH private key file.
+        delete_local_after_upload: Whether to remove local ZIP after successful SFTP upload.
+    """
+
+    host: str = ""
+    port: int = 22
+    user: str = ""
+    password: str = ""
+    remote_dir: str = "/sftp/meca"
+    key_path: str = ""
+    delete_local_after_upload: bool = False
+
+
+@dataclass(frozen=True)
 class EnvironmentSettings:
     """Environment-variable-sourced settings (12_LLD_03 §5; 14_LLD_05 §12.3).
 
@@ -373,11 +411,15 @@ class EnvironmentSettings:
         environment: Which deployment environment this process is running in.
         config_dir: Root directory containing the ``config/`` YAML tree.
         debug_logging_enabled: Whether the debug logging category is enabled.
+        s3: S3 bucket and prefix configuration.
+        sftp: SFTP destination connection configuration.
     """
 
     environment: Environment
     config_dir: Path
     debug_logging_enabled: bool
+    s3: S3EnvironmentSettings = field(default_factory=S3EnvironmentSettings)
+    sftp: SftpEnvironmentSettings = field(default_factory=SftpEnvironmentSettings)
 
 
 @dataclass(frozen=True)

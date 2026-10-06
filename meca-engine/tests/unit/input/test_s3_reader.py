@@ -163,10 +163,12 @@ def test_wrong_source_type_raises_type_error(reader: S3Reader) -> None:
         reader.list_batch_article_ids(wrong_source)  # type: ignore[arg-type]
 
 
-def test_boto3_s3_client_raises_configuration_error_when_boto3_not_installed() -> None:
-    # This test environment deliberately does not install boto3 (an
-    # optional "aws" dependency group, per the current task's allowance
-    # that "concrete AWS integration may be mocked"), so this exercises
-    # the real, intended failure path rather than a simulated one.
+def test_boto3_s3_client_raises_configuration_error_when_boto3_not_installed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import sys
+
+    monkeypatch.setitem(sys.modules, "boto3", None)
     with pytest.raises(ConfigurationError, match="boto3"):
         Boto3S3Client()
+

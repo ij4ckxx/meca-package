@@ -8,6 +8,7 @@ implement without touching anything downstream of :class:`StagedArticle`.
 
 from __future__ import annotations
 
+import os
 import shutil
 import tempfile
 import zipfile
@@ -167,27 +168,165 @@ def _reject_unsafe_members(names: list[str], destination_root: Path, article_id:
 
 
 class S3InputProvider(InputProvider):
-    """Placeholder — AWS S3 input is not implemented in Phase 1 (ADR-030)."""
+    """Downloads and stages articles from Amazon S3 using AWS SDK default credentials.
+
+    Follows the AWS Default Credential Provider Chain (IAM Role, AWS SSO, ~/.aws/credentials)
+    without requiring static AWS_ACCESS_KEY_ID or AWS_SECRET_ACCESS_KEY.
+    """
+
+    def __init__(
+        self,
+        bucket: str | None = None,
+        prefix: str | None = None,
+        region: str | None = None,
+    ) -> None:
+        """Initialize the S3 input provider.
+
+        Args:
+            bucket: S3 bucket name. If omitted, read from S3_BUCKET_NAME env var.
+            prefix: Key prefix within the bucket. If omitted, read from S3_INPUT_PREFIX.
+            region: AWS region. If omitted, read from AWS_REGION or defaults to us-east-1.
+        """
+        self.bucket = (
+            bucket
+            or os.environ.get("S3_BUCKET_NAME")
+            or os.environ.get("MECA_S3_BUCKET_NAME")
+            or ""
+        )
+        self.prefix = (
+            prefix
+            if prefix is not None
+            else os.environ.get("S3_INPUT_PREFIX", os.environ.get("MECA_S3_INPUT_PREFIX", ""))
+        ).strip("/")
+        self.region = (
+            region
+            or os.environ.get("AWS_REGION")
+            or os.environ.get("AWS_DEFAULT_REGION")
+            or "us-east-1"
+        )
+        self._client = None
+
+    def _get_client(self):
+        if self._client is not None:
+            return self._client
+        try:
+            import boto3
+        except ImportError as exc:
+            from meca_engine.exceptions import ConfigurationError
+
+            raise ConfigurationError(
+                "boto3 is required to use S3InputProvider but is not installed. "
+                'Install it with: pip install -e ".[aws]" (or pip install boto3)',
+                stage=_STAGE,
+                inner_cause=exc,
+            ) from exc
+
+        client_kwargs = {}
+        if self.region:
+            client_kwargs["region_name"] = self.region
+        self._client = boto3.client("s3", **client_kwargs)
+        return self._client
 
     def list_articles(self) -> tuple[str, ...]:
-        """Not implemented.
+        """List all article IDs available in the configured S3 bucket."""
+        if not self.bucket:
+            raise ProviderNotConfiguredError(
+                "S3InputProvider is not configured: S3_BUCKET_NAME environment variable is not set.",
+                stage=_STAGE,
+            )
+        client = self._get_client()
+        paginator = client.get_paginator("list_objects_v2")
+        article_ids: set[str] = set()
 
-        See :class:`~meca_engine.exceptions.batch_errors.ProviderNotConfiguredError`.
-        """
-        raise ProviderNotConfiguredError(
-            "S3InputProvider is not implemented (Archive Migration Platform, future phase).",
-            stage=_STAGE,
-        )
+        prefix_with_slash = f"{self.prefix}/" if self.prefix else ""
+
+        try:
+            for page in paginator.paginate(
+                Bucket=self.bucket, Prefix=prefix_with_slash, Delimiter="/"
+            ):
+                for obj in page.get("Contents", []):
+                    key = obj["Key"]
+                    if key.endswith(".zip"):
+                        name = key[len(prefix_with_slash) :]
+                        stem = Path(name).stem
+                        if stem and "__MACOSX" not in key:
+                            article_ids.add(stem)
+                for cp in page.get("CommonPrefixes", []):
+                    p = cp["Prefix"]
+                    name = p[len(prefix_with_slash) :].rstrip("/")
+                    if name:
+                        article_ids.add(name)
+        except Exception as exc:
+            raise SourceUnavailableError(
+                f"Failed to list articles from S3 bucket {self.bucket!r} (prefix={self.prefix!r}): {exc}",
+                stage=_STAGE,
+                inner_cause=exc,
+            ) from exc
+
+        return tuple(sorted(article_ids))
 
     def stage_article(self, article_id: str) -> StagedArticle:
-        """Not implemented.
+        """Download and unpack one article from S3 to a temporary staging folder."""
+        if not self.bucket:
+            raise ProviderNotConfiguredError(
+                "S3InputProvider is not configured: S3_BUCKET_NAME environment variable is not set.",
+                stage=_STAGE,
+                article_id=article_id,
+            )
+        client = self._get_client()
+        tmp_path = Path(tempfile.mkdtemp(prefix=f"am_{article_id}_"))
+        prefix_with_slash = f"{self.prefix}/" if self.prefix else ""
+        zip_key = f"{prefix_with_slash}{article_id}.zip"
+        local_zip = tmp_path / f"{article_id}.zip"
 
-        See :class:`~meca_engine.exceptions.batch_errors.ProviderNotConfiguredError`.
-        """
-        raise ProviderNotConfiguredError(
-            "S3InputProvider is not implemented (Archive Migration Platform, future phase).",
-            stage=_STAGE,
+        try:
+            # First attempt: single zip archive download
+            downloaded_zip = False
+            try:
+                client.download_file(self.bucket, zip_key, str(local_zip))
+                downloaded_zip = True
+            except Exception:
+                downloaded_zip = False
+
+            if downloaded_zip:
+                with zipfile.ZipFile(local_zip) as archive:
+                    names = [n for n in archive.namelist() if "__MACOSX" not in n]
+                    _reject_unsafe_members(names, tmp_path, article_id)
+                    archive.extractall(tmp_path, members=names)
+                source_xml_path = _find_source_xml(tmp_path, article_id)
+            else:
+                # Second attempt: article directory of files
+                folder_prefix = f"{prefix_with_slash}{article_id}/"
+                paginator = client.get_paginator("list_objects_v2")
+                downloaded_any = False
+                for page in paginator.paginate(Bucket=self.bucket, Prefix=folder_prefix):
+                    for obj in page.get("Contents", []):
+                        key = obj["Key"]
+                        rel_path = key[len(folder_prefix) :]
+                        if not rel_path or rel_path.endswith("/"):
+                            continue
+                        dest_file = tmp_path / rel_path
+                        dest_file.parent.mkdir(parents=True, exist_ok=True)
+                        client.download_file(self.bucket, key, str(dest_file))
+                        downloaded_any = True
+
+                if not downloaded_any:
+                    raise SourceUnavailableError(
+                        f"Source for {article_id!r} not found in S3 bucket {self.bucket!r} (checked {zip_key!r} and {folder_prefix!r})",
+                        article_id=article_id,
+                        stage=_STAGE,
+                    )
+                source_xml_path = _find_source_xml(tmp_path, article_id)
+
+        except BaseException:
+            shutil.rmtree(tmp_path, ignore_errors=True)
+            raise
+
+        return StagedArticle(
             article_id=article_id,
+            staged_root=source_xml_path.parent,
+            source_xml_path=source_xml_path,
+            extraction_root=tmp_path,
         )
 
 

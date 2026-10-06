@@ -75,6 +75,8 @@ class ProcessingService:
         article_id_filter: frozenset[str] | None = None,
         control_path: Path | None = None,
         status_path: Path | None = None,
+        limit: int | None = None,
+        offset: int = 0,
     ) -> None:
         """Initialize the service with its already-wired dependencies.
 
@@ -91,6 +93,8 @@ class ProcessingService:
                 ``None`` disables live control entirely.
             status_path: If given, a live-status JSON snapshot is written
                 after each article. ``None`` disables it entirely.
+            limit: Optional maximum number of articles to process in this run.
+            offset: Optional number of articles to skip from the beginning.
         """
         self._input_provider = input_provider
         self._worker = worker
@@ -98,13 +102,19 @@ class ProcessingService:
         self._article_id_filter = article_id_filter
         self._control_path = control_path
         self._status_path = status_path
+        self._limit = limit
+        self._offset = offset
 
     def run(self) -> BatchStatusSnapshot:
         """Run every job the configured InputProvider reports, and return a status snapshot."""
         article_ids = self._input_provider.list_articles()
         if self._article_id_filter is not None:
             article_ids = tuple(a for a in article_ids if a in self._article_id_filter)
-        print(f"Found {len(article_ids)} packages via {type(self._input_provider).__name__}")
+        if self._offset > 0:
+            article_ids = article_ids[self._offset :]
+        if self._limit is not None:
+            article_ids = article_ids[: self._limit]
+        print(f"Found {len(article_ids)} packages to process via {type(self._input_provider).__name__}")
 
         queue = JobQueue()
         for article_id in article_ids:

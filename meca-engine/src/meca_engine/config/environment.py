@@ -14,12 +14,26 @@ import os
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from meca_engine.config.schema import EnvironmentSettings
+from meca_engine.config.schema import (
+    EnvironmentSettings,
+    S3EnvironmentSettings,
+    SftpEnvironmentSettings,
+)
 from meca_engine.constants import (
     DEFAULT_CONFIG_DIR,
+    ENV_VAR_AWS_REGION,
     ENV_VAR_CONFIG_DIR,
     ENV_VAR_DEBUG_LOGGING,
     ENV_VAR_ENVIRONMENT,
+    ENV_VAR_S3_BUCKET_NAME,
+    ENV_VAR_S3_INPUT_PREFIX,
+    ENV_VAR_SFTP_DELETE_LOCAL,
+    ENV_VAR_SFTP_HOST,
+    ENV_VAR_SFTP_KEY_PATH,
+    ENV_VAR_SFTP_PASSWORD,
+    ENV_VAR_SFTP_PORT,
+    ENV_VAR_SFTP_REMOTE_DIR,
+    ENV_VAR_SFTP_USER,
     Environment,
 )
 from meca_engine.exceptions import ConfigurationError
@@ -77,8 +91,37 @@ def load_environment_settings(env: Mapping[str, str] | None = None) -> Environme
     config_dir = Path(source.get(ENV_VAR_CONFIG_DIR, DEFAULT_CONFIG_DIR))
     debug_logging_enabled = _parse_bool(source.get(ENV_VAR_DEBUG_LOGGING, "false"))
 
+    # S3 environment settings (using AWS Default Credential Provider Chain)
+    s3_settings = S3EnvironmentSettings(
+        bucket_name=source.get(ENV_VAR_S3_BUCKET_NAME, source.get("MECA_S3_BUCKET_NAME", "")),
+        prefix=source.get(ENV_VAR_S3_INPUT_PREFIX, source.get("MECA_S3_INPUT_PREFIX", "")),
+        region=source.get(ENV_VAR_AWS_REGION, source.get("AWS_DEFAULT_REGION", "us-east-1")),
+    )
+
+    # SFTP environment settings
+    sftp_port_raw = source.get(ENV_VAR_SFTP_PORT, source.get("MECA_SFTP_PORT", "22"))
+    try:
+        sftp_port = int(sftp_port_raw) if sftp_port_raw else 22
+    except ValueError:
+        sftp_port = 22
+
+    sftp_settings = SftpEnvironmentSettings(
+        host=source.get(ENV_VAR_SFTP_HOST, source.get("MECA_SFTP_HOST", "")),
+        port=sftp_port,
+        user=source.get(ENV_VAR_SFTP_USER, source.get("MECA_SFTP_USER", "")),
+        password=source.get(ENV_VAR_SFTP_PASSWORD, source.get("MECA_SFTP_PASSWORD", "")),
+        remote_dir=source.get(
+            ENV_VAR_SFTP_REMOTE_DIR, source.get("MECA_SFTP_REMOTE_DIR", "/sftp/meca")
+        ),
+        key_path=source.get(ENV_VAR_SFTP_KEY_PATH, ""),
+        delete_local_after_upload=_parse_bool(source.get(ENV_VAR_SFTP_DELETE_LOCAL, "false")),
+    )
+
     return EnvironmentSettings(
         environment=environment,
         config_dir=config_dir,
         debug_logging_enabled=debug_logging_enabled,
+        s3=s3_settings,
+        sftp=sftp_settings,
     )
+

@@ -190,3 +190,21 @@ def test_stop_after_current_processes_one_more_article_then_stops(tmp_path: Path
     status = json.loads(status_path.read_text())
     assert status["state"] == "stopped"
     assert status["completed"] == 1
+
+
+def test_run_respects_limit_and_offset(tmp_path: Path) -> None:
+    worker = _FakeWorker()
+    articles = tuple(f"article-{i}" for i in range(1, 11))
+    service = ProcessingService(
+        input_provider=_FakeInputProvider(articles),
+        worker=worker,
+        reports_dir=tmp_path,
+        offset=3,
+        limit=4,
+    )
+
+    service.run()
+
+    # Skips first 3 (article-1, 2, 3), processes next 4 (article-4, 5, 6, 7)
+    assert worker.processed == ["article-4", "article-5", "article-6", "article-7"]
+

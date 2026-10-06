@@ -50,6 +50,8 @@ def extract_sample(
         The extracted sample's paths.
     """
     zip_path = _INPUT_DIR / zip_name
+    if not zip_path.is_file():
+        pytest.skip(f"Real sample {zip_name} is not present in {_INPUT_DIR}")
     with zipfile.ZipFile(zip_path) as archive:
         archive.extractall(destination)
     xml_path = destination / xml_member

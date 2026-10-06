@@ -83,3 +83,38 @@ def test_output_settings_defaults_never_point_to_output_folder() -> None:
 
     assert settings.local_path != "./Output"
     assert settings.local_path == "./archive_migration_validation/generated_packages"
+
+
+def test_sftp_output_provider_upload_package(tmp_path, monkeypatch) -> None:
+    article_dir = tmp_path / "CS20240001"
+    article_dir.mkdir(parents=True)
+    zip_file = article_dir / "MECA_CS20240001.zip"
+    zip_file.write_text("dummy zip content")
+
+    provider = SftpOutputProvider(
+        local_path=str(tmp_path),
+        host="test.sftp.com",
+        user="testuser",
+        remote_dir="/sftp/meca",
+    )
+
+    uploaded_files = []
+
+    class FakeSftp:
+        def stat(self, path):
+            return True
+
+        def put(self, local, remote):
+            uploaded_files.append((local, remote))
+
+        def posix_rename(self, src, dst):
+            pass
+
+    monkeypatch.setattr(provider, "_get_sftp", lambda: FakeSftp())
+
+    remote_path = provider.upload_package("CS20240001", article_dir)
+
+    assert remote_path == "/sftp/meca/MECA_CS20240001.zip"
+    assert len(uploaded_files) == 1
+    assert uploaded_files[0][1] == "/sftp/meca/.MECA_CS20240001.zip.tmp"
+

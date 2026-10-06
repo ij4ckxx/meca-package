@@ -1,106 +1,35 @@
-# Operational runtime settings — 12_LLD_03_CONFIG_LOGGING_EXCEPTIONS.md §5.7.
-# Unlike journal/publisher/license/media-type configuration, these are
-# operational settings, not business-value data, so they are populated here
-# in Milestone 1. Values below are the LLD's illustrative defaults and are
-# expected to be tuned empirically during Phase 7 (Performance Optimization)
-# per 16_LLD_07_READINESS_ASSESSMENT.md §15.2 (TQ-01, TQ-05, TQ-06, TQ-07).
-#
-# RC-1 configuration review note: the live production pipeline today is
-# `scripts/archive_migration_batch.py` -> `service.service_factory` ->
-# `service.Worker`/`service.ProcessingService` (single-process, strictly
-# sequential). An earlier, superseded orchestrator (`container.py` +
-# `input/staging.py`) is still present but not wired into that pipeline.
-# The sections below are marked [LIVE] (read by the current pipeline) or
-# [NOT YET WIRED] (schema-valid, kept for forward compatibility / the
-# planned AWS integration phase, but silently has no effect today — not a
-# bug, just not yet consumed) so an operator tuning this file before
-# deployment knows which values actually change behavior.
-
-# [NOT YET WIRED] `ProcessingService` runs strictly sequentially today —
-# neither field is read by the live pipeline. Reserved for a future
-# concurrent-processing phase.
 concurrency:
   worker_count: 8
   mechanism: process_pool
-
-# [LIVE] Read by `service_factory` and used by `Worker`'s
-# `run_with_retry` wrapping.
 retry:
   max_attempts: 3
   backoff_base_seconds: 2
-  backoff_multiplier: 2.0
+  backoff_multiplier: 2
   backoff_max_seconds: 60
-
-# [NOT YET WIRED] DTD validation runs unconditionally in the live
-# pipeline (`Worker` always calls `validate_staged_package`) — neither
-# field currently gates or changes that behavior.
 validation:
   dtd_validation_enabled: true
   severity_block_threshold: HIGH
-
-# [NOT YET WIRED] Only consumed by the superseded `container.py`/
-# `input/staging.py` orchestrator. The live pipeline
-# (`providers.input.LocalInputProvider`) stages each article into a
-# fresh OS temp directory instead (cleaned up automatically after each
-# article) and does not read this section.
 staging:
   strategy: full_local_staging
   working_dir_root: /var/meca-engine/work
-
-# [PARTIALLY LIVE] `provider`/`local_path` are read by `service_factory`
-# and are live. `operational_bucket`/`archival_bucket` are forward-looking
-# placeholders for the planned AWS/S3 integration phase — not read by any
-# code today; `provider: LOCAL` is what's actually active.
 output:
   operational_bucket: meca-output-operational
   archival_bucket: meca-output-archival
-  # Archive Migration Platform Phase 1 (ADR-030). Deliberately NOT "./Output" —
-  # that folder holds hand-curated reference packages, still read directly
-  # by several golden tests (`tests/golden/test_*_xml_golden.py`), that must
-  # never be overwritten. See the Phase 1 Configuration Guide for the full
-  # rationale.
   provider: LOCAL
   local_path: ./archive_migration_validation/generated_packages
-
-# [NOT YET WIRED] `service_factory` constructs an in-memory checkpoint
-# store unconditionally (`InMemoryCheckpointStore`) — this value is not
-# read. A durable backend (Postgres or otherwise) is a deliberately
-# deferred future phase, not a defect (see `checkpoint/store.py`'s own
-# docstring); checkpointing today only dedupes within one process's
-# lifetime, not across restarts.
 checkpoint:
   backend: postgres
-
-# [NOT YET WIRED] Same as `checkpoint` above — `service_factory`
-# constructs an in-memory DOI registry unconditionally
-# (`InMemoryDoiRegistry`); this value is not read.
 doi_registry:
   backend: postgres
-
-# [NOT YET WIRED] `service_factory` constructs `AssetCopyService`/
-# `ZipBuilder` with hardcoded literals that happen to match these
-# defaults (`overwrite_policy="fail"`, `compression="deflated"`,
-# `compresslevel=6`) — changing these values has no effect today.
 packaging:
   zip_compression: deflated
   zip_compresslevel: 6
   staging_subdir_name: package_staging
   overwrite_policy: fail
-
-# --- Archive Migration Platform Phase 1 (ADR-030) ---
-
-# [LIVE]
 input:
   provider: LOCAL
   local_path: ./Input
-
-# [LIVE]
 dashboard:
   reports_path: ./archive_migration_validation
-
-# [NOT YET WIRED] The live pipeline never calls `configure_root_logging`
-# (only the superseded `container.py` orchestrator does, and it reads a
-# different field — `environment_settings.debug_logging_enabled` — not
-# this one). Root logging level defaults to Python's own default today.
 logging:
   level: INFO

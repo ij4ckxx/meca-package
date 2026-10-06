@@ -38,6 +38,18 @@ def _parse_args() -> argparse.Namespace:
         help="Comma-separated article ids to process; omit to process everything the "
         "configured InputProvider reports.",
     )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Maximum number of articles to process in this run (e.g. 50).",
+    )
+    parser.add_argument(
+        "--offset",
+        type=int,
+        default=0,
+        help="Number of articles to skip from the beginning (e.g. 0, 50, 100).",
+    )
     return parser.parse_args()
 
 
@@ -62,6 +74,8 @@ def main() -> int:
         repo_root=REPO_ROOT,
         batch_id=args.batch_id,
         article_id_filter=article_id_filter,
+        limit=args.limit,
+        offset=args.offset,
     )
     service.run()
     return 0

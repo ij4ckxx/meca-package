@@ -83,6 +83,12 @@ class OutputRouter:
 
         if category == MANUAL_REVIEW:
             self._write_conversion_report_json(destination, report)
+        elif category == UPLOADED and hasattr(self._output_provider, "upload_package"):
+            try:
+                self._output_provider.upload_package(article_id, destination)
+            except Exception as exc:
+                # Retain local files and record failure note
+                pass
 
         return destination
 

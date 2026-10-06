@@ -59,6 +59,8 @@ def build_processing_service(
     repo_root: Path,
     batch_id: str | None = None,
     article_id_filter: frozenset[str] | None = None,
+    limit: int | None = None,
+    offset: int = 0,
 ) -> ProcessingService:
     """Wire every dependency and return a ready-to-run :class:`ProcessingService`.
 
@@ -171,4 +173,6 @@ def build_processing_service(
         article_id_filter=article_id_filter,
         control_path=control_path,
         status_path=status_path,
+        limit=limit,
+        offset=offset,
     )
